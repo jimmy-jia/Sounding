@@ -15,20 +15,20 @@ var i=1;
 var j=10;
 var initial=1;
 function songpost(){
-	postRef.orderByPriority().on('value', function(postSnapshot){
+	postRef.on('value', function(postSnapshot){
 		var songData=postSnapshot.val();
 		console.log(songData);
 		var objectsData=Object.getOwnPropertyNames(songData);
 		var length=objectsData.length;
-		while(objectsData[length-i-1] && i<j){
-			var returnvalue=objectsData[length-i- 1];
+		while(objectsData[length-i] && i<j){
+			var returnvalue=objectsData[length-i];
 			i++;
 			var curSong=songData[returnvalue];
 			createPost(curSong.link, curSong.title, curSong.artist, curSong.description);
 		}
 	});
-	updatepost(initial);
 }
+updatepost(initial);
 function updatepost(initial){
 	initial=1;
 	postRef.limitToLast(1).on('child_added', function(snapshot){
@@ -66,7 +66,6 @@ function displayPost(title, artist, description){
 	$('<p/>').text(description).appendTo($(newDiv));
 	$("#postcontent").append(newDiv);
 	$(newDiv).slideDown(500);
-	console.log(i);
 }
 function loadMore(){
 	j+=10;
