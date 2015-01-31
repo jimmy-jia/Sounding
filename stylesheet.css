@@ -1,24 +1,22 @@
-html{
+html, body{
 	width:100%;
 	height:100%;
 	margin:0;
 	padding:0;
-	overflow-x:hidden;
 }
 body{
-	margin:0;
-	padding:0;
 	background-color:#2c3e50;
 	background-color:rgba(44, 62, 80, 1);
+	background-image:url('bg.png');
 }
 a{
 	text-decoration:none;
 	color:#2c3e50;
-	font-style:italic;
 	transition:color .4s;
 }
 a:hover{
 	color:orange;
+	cursor: pointer;
 }
 p{
 	color:#2c3e50;
@@ -28,11 +26,16 @@ p{
 li{
 	font-family:'Open Sans', Sans-serif;
 }
+.wrapper{
+	min-height: 100%;
+	margin: 0 auto -50px;
+}
 .topbar{
 	background-color:white;
 	position:fixed;
 	z-index:1;
 	width:100%;
+	box-shadow:0 -2px 5px black;
 }
 .topbar button:nth-child(2){
 	float:right;
@@ -65,23 +68,51 @@ button, input[type=button], input[type=reset], input[type=submit]{
 	transition:background-color .4s;
 	color:#2c3e50;
 }
-button:hover{
+button:hover, input[type=button]:hover{
 	cursor:pointer;
+	box-shadow:0 0 5px white;
+}
+button:hover{
 	background-color:#2c3e50;
 	color:white;
 }
 button:active, button:focus, #search{
 	outline:0;
 }
-
-
+.wrapper > input[type=button]{
+	background-color:white;
+	border:0;
+	transition:box-shadow .4s;
+}
 .toppage{
 	text-align:center;
 	background-color:white;
-	padding-top:100px;
+	padding:80px 0;
+	padding-top:150px;
 }
-.toppage p{
-
+.infoslide{
+	display:flex;
+	flex-wrap:wrap;
+	width:1200px;
+	margin:0px auto;
+}
+#infowrapper{
+	width:100%;
+	background-color:white;
+	margin-bottom:20px;
+	padding-bottom:20px;
+}
+.aboutclose{
+	margin:0 auto;
+	width:50px;
+	display:block;
+}
+.aboutclose img{
+	display:block;
+	margin:0 auto;
+}
+.aboutclose:hover{
+	cursor:pointer;
 }
 .toppage p:first-child{
 	font-size:300%;
@@ -94,25 +125,29 @@ button:active, button:focus, #search{
 	height: 0;
 	margin:0 auto;
 	border-style: solid;
-	border-width: 20vh 49.5vw 0 49.5vw;
+	border-width: 10vw 49.5vw 0 49.5vw;
 	border-color: white transparent transparent transparent;
 }
-
-
 .content{
 	display:flex;
 	flex-wrap:wrap;
-	width:60%;
+	width:1200px;
 	margin:80px auto;
 }
-
+.about{
+	width:800px;
+	background-color:white;
+	padding:40px;
+	margin:0 auto;
+	box-sizing:border-box;
+}
 .item{
-	height:400px;
+	height:auto;
 	width:500px;
 	background-color:white;
 	margin:10px auto;
-	border:20px solid white;
-	box-shadow:0 0 15px black;
+	padding:10px;
+	border:10px solid white;
 }
 .item iframe{
 	padding:10px;
@@ -132,13 +167,15 @@ button:active, button:focus, #search{
 .item p:nth-child(3){
 	padding-top:10px;
 }
-
-
-
-
 #post{
 	display:none;
-	margin:50px auto;
+	position:fixed;
+	left:0;
+	right:0;
+	margin:0 auto;
+	top:50%;
+	margin-top:-190px;
+	box-shadow:0 0 8px black;
 }
 form input[type=text], textarea{
 	padding:10px;
@@ -157,13 +194,23 @@ div input[type=button]:nth-child(6){
 	margin-bottom:50px;
 	padding:10px;
 }
-
-
-
-
+.push, .footer{
+	height:50px;
+}
+.footer{
+	background-color:white;
+	text-align:center;
+}
+.footer p{
+	padding:10px 0;
+	font-size:130%;
+}
+.footer a{
+	font-style:none;
+}
 body::-webkit-scrollbar {
-	width: 6px;
-	height:6px;
+	width: 8px;
+	height:8px;
 }
 body::-webkit-scrollbar-track {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
@@ -173,9 +220,27 @@ body::-webkit-scrollbar-thumb {
   	background-color: #2c3e50;
   	border-left:1px solid rgba(0,0,0,.5);
 }
+@media print, screen and (min-width:1145px){
+	.clear{
+		background-color:transparent;
+		box-shadow:0 0 0;
+		border: 10px solid transparent;
+	}
+	.clear *{
+		color:white;
+	}
+	.clear p:nth-child(2){
+		border-bottom:1px solid white;
+	}
+}
+@media print, screen and (max-width:1210px){
+	.content, .infoslide, .about{
+		width:95%;
+	}
+}
 
 @media print, screen and (max-width:600px){
-	.content{
+	.content, .infoslide, .about{
 		width:100%;
 	}
 	.item{
@@ -183,6 +248,7 @@ body::-webkit-scrollbar-thumb {
 	}
 	.item iframe{
 		width:100%;
+		height:60vw;
 		padding:0 0;
 	}
 	#search{
@@ -194,16 +260,17 @@ body::-webkit-scrollbar-thumb {
 	}
 	#post{
 		width:100%;
-		margin:0;
-		margin-top:25px;
-		margin-bottom:-30px;
+		top:48px;
 		padding:0;
+		margin-top:0;
 		padding-top:10px;
-		border:0;
 	}
 	#post > *{
 		width:auto;
 		margin:0;
+	}
+	#postform > input[type=text], #postform > textarea{
+		width:80%;
 	}
 	#post input[type=button]{
 		margin:0;

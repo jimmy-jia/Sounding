@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Sounding</title>
+		<title>Musiek</title>
 		<meta charset="utf-8">
 		<link href="stylesheet.css" rel="stylesheet" type="text/css">
 		<link href="fonts.css" rel="stylesheet" type="text/css">
 		<link rel="icon" href="favicon.ico">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<script src='jquery.min.js'></script>
 		<script src="https://cdn.firebase.com/js/client/2.1.0/firebase.js"></script>
 		<script src="sounding.js"></script>
@@ -16,16 +16,40 @@
 			<div class="topbar">
 				<button class="postbutton" onclick="showpost()">+ Post</button>
 				<button class="login" onclick="login">Login</button>
-				<input id="search" placeholder="Search"></input>
+				<!--<input id="search" placeholder="Search"></input>-->
 			</div>
 
 
 			<div class="toppage">
-				<p>Sounding</p>
+				<p>Musiek.us</p>
 				<p>Realtime Music Discovery</p>
 			</div>
-			<div class="toptri"></div>
-
+			<!--<div class="toptri"></div>-->
+			<div id="infowrapper">
+				<div class="infoslide" id="infoslide">
+					<div class="item">
+						<p>Musiek.us</p>
+						<p>Community Music Discovery</p>
+						<p>Discover new music with Musiek.us today!</p>
+						<p>Wide ranges of songs submitted by users like you.</p>
+						<p><br>Join our community and start discovering new songs daily!</p>
+						<br><p>This website is still in development! Please ignore my test posts :)
+						<br>Please email me any suggestions at <a href="mailto:jimmy.j.jia@gmail.com">jimmy.j.jia@gmail.com</a></p>
+						<br><p>Features I'm looking to implement:</p>
+						<ul><li>Login</li><li>Anti-Spam</li><li>Comments</li><li>Better Design</li><li>More!</li></ul>
+					</div>
+					<div class="item">
+						<p>Welcome to Musiek.us</p>
+						<p>How to use Musiek.us</p>
+						<p>Click the login button on the top right and login through Facebook. (Not implemented yet)</p><br>
+						<p>Facebook login is only used for anti-spam prevention, we will not use your information in any way, nor will we post on Facebook on your behalf.</p><br>
+						<p>After logging in, you're free to upload one new post per hour. (Neither is this)</p>
+						<p>For each post, please provide a Youtube link, the song title, the artist, and any description you would like to share! Then watch as your song gets added in realtime to our database, for all users to enjoy!</p><br>
+						<p>Thank you for your contribution to a musically diverse world!</p>
+					</div>
+				</div>
+				<a class="aboutclose" onclick="showabout()"><img src="resources/arrow.svg" height="50px" id="closeimg"></img></a>
+			</div>
 			<div id="post" class="item">
 				<p>Post</p>
 				<p>Contribute a song to the community!</p>
@@ -39,44 +63,21 @@
 					<input type="reset" value="Reset"></input>
 					<input type="button" value="Close" onclick="showpost()"></input>
 				</form>
-
 			</div>
-
 			<div class="content" id="postcontent">
-				<div class="item">
-					<p>Sounding</p>
-					<p>Community Music Discovery</p>
-					<p>Discover new music with Sounding today!</p>
-					<p>Wide ranges of songs submitted by users like you.</p>
-					<p><br>Join our community and start discovering new songs daily!</p>
-					<br><p>This website is still in development! Please ignore my text posts :)
-					<br>Please email me any suggestions at <a href="mailto:jimmy.j.jia@gmail.com">jimmy.j.jia@gmail.com</a></p>
-					<br><p>Features I'm looking to implement:</p>
-					<ul><li>Login</li><li>Anti-Spam</li><li>Comments</li><li>Better Design</li><li>More!</li></ul>
-				</div>
-				<div class="item">
-					<p>Welcome to Sounding</p>
-					<p>How to use Sounding</p>
-					<p>Click the login button on the top right and login through Facebook.</p><br>
-					<p>Facebook login is only used for anti-spam prevention, we will not use your information in any way, nor will we post on Facebook on your behalf.</p><br>
-					<p>After logging in, you're free to upload one new post per hour.</p>
-					<p>For each post, please provide a Youtube link, the song title, the artist, and any description you would like to share! Then watch as your song gets added in realtime to our database, for all users to enjoy!</p><br>
-					<p>Thank you for your contribution to a musically diverse world!</p>
-				</div>
 			</div>
 			<input type="button" value="Load 10 More?" onclick="loadMore()"></input>
+			<div class="footer"><p>Musiek.us | <a onclick="topscroll()">Top</a> | <a href="about.html">About</a> | 2015</p></div>
 		</div>
 		<script>
 			window.onload=pgload;
 		</script>
 		<script>
 			var count=0;
+			var count1=1;
 			function showpost(){
 				var dropper=document.getElementById("post");
 				if (count==0){
-					$("html, body").animate({
-			            scrollTop: 0
-			        }, 600);
 					$(dropper).slideDown(400);
 					count=1;
 				}
@@ -84,6 +85,29 @@
 					$(dropper).slideUp(400);
 					count=0;
 				}
+			}
+			function showabout(){
+				var aboutdrop=document.getElementById("infoslide");
+				var icon=document.getElementById("closeimg");
+				if (count1==0){
+					$(aboutdrop).slideDown(400);
+					count1=1;
+					icon.style.webkitTransform = "rotate(0deg)";
+					icon.element.style.transform = "rotate(0deg)";	
+					icon.element.style.MozTransform = "rotate(0deg)";	
+				}
+				else{
+					$(aboutdrop).slideUp(400);
+					count1=0;
+					icon.style.webkitTransform = "rotate(180deg)";
+					icon.element.style.transform = "rotate(180deg)";	
+					icon.element.style.MozTransform = "rotate(180deg)";	
+				}
+			}
+			function topscroll(){
+				$("html, body").animate({
+			            scrollTop: 0
+			        }, 600);
 			}
 		</script>
 	</body>

@@ -3,13 +3,20 @@ var postRef= ref.child('posts');
 songpost();
 function newPost(){
 	var formData=document.getElementById("postform");
-	postRef.push({
-		'link': formData.elements[0].value,
-		'title': formData.elements[1].value,
-		'artist': formData.elements[2].value,
-		'description': formData.elements[3].value
-	});
-	showpost();
+	var linkID = getId(formData.elements[0].value);
+	if (linkID!='error' && formData.elements[1].value){
+		postRef.push({
+			'link': formData.elements[0].value,
+			'title': formData.elements[1].value,
+			'artist': formData.elements[2].value,
+			'description': formData.elements[3].value
+		});
+		formData.reset();
+		showpost();
+	}
+	else{
+		alert("Your input is invalid! Please edit and try again");
+	}
 }
 var i=1;
 var j=10;
@@ -55,17 +62,17 @@ function getId(link) {
     }
 }
 function displayVideo(videoId){
-	var videoDiv = $('<div class="item"><iframe src="http://www.youtube.com/embed/' + videoId + '" frameborder="0" allowfullscreen></iframe></div>').hide();
+	var videoDiv = $('<div class="item"><iframe src="http://www.youtube.com/embed/' + videoId + '" frameborder="0" allowfullscreen></iframe></div>');
 	$("#postcontent").append(videoDiv);
-	$(videoDiv).slideDown(500);
+	
 }
 function displayPost(title, artist, description){
-	var newDiv = $('<div class="item"></div>').hide();
+	var newDiv = $('<div class="item"></div>');
 	$('<p/>').text(title).appendTo($(newDiv));
 	$('<p/>').text(artist).appendTo($(newDiv));
 	$('<p/>').text(description).appendTo($(newDiv));
 	$("#postcontent").append(newDiv);
-	$(newDiv).slideDown(500);
+	
 }
 function loadMore(){
 	j+=10;
@@ -74,6 +81,7 @@ function loadMore(){
 function topPost(link, title, artist, description){
 	updatePost(title, artist, description);
 	updateVideo(getId(link));
+	i++;
 }
 function updateVideo(videoId){
 	var videoDiv = $('<div class="item"><iframe src="http://www.youtube.com/embed/' + videoId + '" frameborder="0" allowfullscreen></iframe></div>').hide();
