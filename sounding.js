@@ -19,7 +19,7 @@ function newPost(){
 	}
 }
 var i=1;
-var j=10;
+var j=11;
 var initial=1;
 function songpost(){
 	postRef.on('value', function(postSnapshot){
@@ -49,8 +49,8 @@ function updatepost(initial){
 	});
 }
 function createPost(link, title, artist, description){
-	displayVideo(getId(link));
-	displayPost(title, artist, description);
+	displayVideo(getId(link), title, artist, description);
+	//displayPost(title, artist, description);
 }
 function getId(link) {
     var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
@@ -61,10 +61,17 @@ function getId(link) {
         return 'error';
     }
 }
-function displayVideo(videoId){
+function displayVideo(videoId, title, artist, description){
+	var videoDiv = $('<div class="item"><iframe src="http://www.youtube.com/embed/' + videoId + '" frameborder="0" allowfullscreen></iframe></div>');
+	$('<p/>').text(title).appendTo($(videoDiv));
+	$('<p/>').text(artist).appendTo($(videoDiv));
+	$('<p/>').text(description).appendTo($(videoDiv));
+	$("#postcontent").append(videoDiv);
+}
+
+/*function displayVideo(videoId){
 	var videoDiv = $('<div class="item"><iframe src="http://www.youtube.com/embed/' + videoId + '" frameborder="0" allowfullscreen></iframe></div>');
 	$("#postcontent").append(videoDiv);
-	
 }
 function displayPost(title, artist, description){
 	var newDiv = $('<div class="item"></div>');
@@ -72,8 +79,7 @@ function displayPost(title, artist, description){
 	$('<p/>').text(artist).appendTo($(newDiv));
 	$('<p/>').text(description).appendTo($(newDiv));
 	$("#postcontent").append(newDiv);
-	
-}
+}*/
 function loadMore(){
 	j+=10;
 	songpost();
@@ -83,7 +89,15 @@ function topPost(link, title, artist, description){
 	updateVideo(getId(link));
 	i++;
 }
-function updateVideo(videoId){
+function updateVideo(videoId, title, artist, description){
+	var videoDiv = $('<div class="item"><iframe src="https://www.youtube.com/embed/' + videoId + '" frameborder="0" allowfullscreen></iframe></div>').hide();
+	$('<p/>').text(title).appendTo($(videoDiv));
+	$('<p/>').text(artist).appendTo($(videoDiv));
+	$('<p/>').text(description).appendTo($(videoDiv));
+	$("#postcontent").prepend(videoDiv);
+	$(videoDiv).slideDown(500);
+}
+/*function updateVideo(videoId){
 	var videoDiv = $('<div class="item"><iframe src="https://www.youtube.com/embed/' + videoId + '" frameborder="0" allowfullscreen></iframe></div>').hide();
 	$("#postcontent").prepend(videoDiv);
 	$(videoDiv).slideDown(500);
@@ -95,4 +109,4 @@ function updatePost(title, artist, description){
 	$('<p/>').text(description).appendTo($(newDiv));
 	$("#postcontent").prepend(newDiv);
 	$(newDiv).slideDown(500);
-}
+}*/

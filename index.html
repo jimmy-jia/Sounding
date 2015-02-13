@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Musiek</title>
+		<title>cephei.us</title>
+		<meta name="description" content="Cephei.us is a realtime music discovery platform, come join us and see what everyone is listening to!">
+		<meta name="keywords" content="music, cephei, discovery, platform, realtime, community">
 		<meta charset="utf-8">
 		<link href="stylesheet.css" rel="stylesheet" type="text/css">
 		<link href="fonts.css" rel="stylesheet" type="text/css">
@@ -21,16 +23,16 @@
 
 
 			<div class="toppage">
-				<p>Musiek.us</p>
+				<p>cephei.us</p>
 				<p>Realtime Music Discovery</p>
 			</div>
-			<!--<div class="toptri"></div>-->
 			<div id="infowrapper">
 				<div class="infoslide" id="infoslide">
 					<div class="item">
-						<p>Musiek.us</p>
+						<span></span>
+						<p>cephei.us</p>
 						<p>Community Music Discovery</p>
-						<p>Discover new music with Musiek.us today!</p>
+						<p>Discover new music with cephei.us today!</p>
 						<p>Wide ranges of songs submitted by users like you.</p>
 						<p><br>Join our community and start discovering new songs daily!</p>
 						<br><p>This website is still in development! Please ignore my test posts :)
@@ -39,8 +41,9 @@
 						<ul><li>Login</li><li>Anti-Spam</li><li>Comments</li><li>Better Design</li><li>More!</li></ul>
 					</div>
 					<div class="item">
-						<p>Welcome to Musiek.us</p>
-						<p>How to use Musiek.us</p>
+						<span></span>
+						<p>Welcome to cephei.us</p>
+						<p>How to use cephei.us</p>
 						<p>Click the login button on the top right and login through Facebook. (Not implemented yet)</p><br>
 						<p>Facebook login is only used for anti-spam prevention, we will not use your information in any way, nor will we post on Facebook on your behalf.</p><br>
 						<p>After logging in, you're free to upload one new post per hour. (Neither is this)</p>
@@ -66,12 +69,9 @@
 			</div>
 			<div class="content" id="postcontent">
 			</div>
-			<input type="button" value="Load 10 More?" onclick="loadMore()"></input>
-			<div class="footer"><p>Musiek.us | <a onclick="topscroll()">Top</a> | <a href="about.html">About</a> | 2015</p></div>
+			<input type="button" value="Load More!" onclick="loadMore()"></input>
+			<div class="footer"><p>cephei.us | <a onclick="topscroll()">Top</a> | <a href="about.html">About</a> | 2015</p></div>
 		</div>
-		<script>
-			window.onload=pgload;
-		</script>
 		<script>
 			var count=0;
 			var count1=1;
@@ -109,6 +109,14 @@
 			            scrollTop: 0
 			        }, 600);
 			}
+			var loaded=0;
+			$(window).scroll(function () {
+				setTimeout(function(){loaded=1},1500);
+			    if ($(window).scrollTop() >= $(document).height() - $(window).height() - 10) {
+			    	if(loaded==1){
+			      loadMore();}
+			   }
+			});
 		</script>
 	</body>
 </html>
