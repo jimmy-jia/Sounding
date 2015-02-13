@@ -84,7 +84,7 @@ function topPost(link, title, artist, description){
 	i++;
 }
 function updateVideo(videoId){
-	var videoDiv = $('<div class="item"><iframe src="http://www.youtube.com/embed/' + videoId + '" frameborder="0" allowfullscreen></iframe></div>').hide();
+	var videoDiv = $('<div class="item"><iframe src="https://www.youtube.com/embed/' + videoId + '" frameborder="0" allowfullscreen></iframe></div>').hide();
 	$("#postcontent").prepend(videoDiv);
 	$(videoDiv).slideDown(500);
 }
