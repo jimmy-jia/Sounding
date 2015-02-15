@@ -85,8 +85,8 @@ function loadMore(){
 	songpost();
 }
 function topPost(link, title, artist, description){
-	updatePost(title, artist, description);
-	updateVideo(getId(link));
+//	updatePost(title, artist, description);
+	updateVideo(getId(link), title, artist, description);
 	i++;
 }
 function updateVideo(videoId, title, artist, description){
