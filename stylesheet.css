@@ -18,6 +18,9 @@ a:hover{
 	color:orange;
 	cursor: pointer;
 }
+button{
+	font-family:'Lato', Sans-serif;
+}
 p{
 	color:#2c3e50;
 	margin:0;
@@ -176,7 +179,7 @@ form input[type=text], textarea{
 	width:70%;
 	margin:10px auto;
 	display:block;
-	font-family:Arial;
+	font-family:'Lato', Sans-serif;
 }
 form input[type=button]:nth-child(5){
 	margin-left:24%;
