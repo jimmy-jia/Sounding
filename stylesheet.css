@@ -40,11 +40,17 @@ li{
 	width:100%;
 	box-shadow:0 -2px 5px black;
 }
-.topbar button:nth-child(2){
+.topbar input, .login{
 	float:right;
 }
-.topbar input{
-	float:right;
+.topbut{
+	font-size:24px;
+	transition:background-color .4s;
+	font-family:'Lato', Sans-serif;
+}
+.topbut:hover{
+	background-color:#2c3e50;
+	color:white;
 }
 .postbutton{
 	background-color:transparent;
@@ -94,7 +100,7 @@ button:active, button:focus, #search{
 	padding-top:150px;
 }
 .infoslide{
-	display:flex;
+	display:none;
 	flex-wrap:wrap;
 	width:1200px;
 	margin:0px auto;
@@ -104,6 +110,7 @@ button:active, button:focus, #search{
 	background-color:white;
 	margin-bottom:20px;
 	padding-bottom:20px;
+	margin-top:-10px;
 }
 .aboutclose{
 	margin:0 auto;

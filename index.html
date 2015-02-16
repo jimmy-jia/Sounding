@@ -14,11 +14,29 @@
 		<script src="sounding.js"></script>
 	</head>
 	<body>
+		<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1413249035642465',
+      xfbml      : true,
+      version    : 'v2.2'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
 		<div class="wrapper">
 			<div class="topbar">
 				<button class="postbutton" onclick="showpost()">+ Post</button>
 				<button class="login" onclick="login">Login</button>
 				<!--<input id="search" placeholder="Search"></input>-->
+				<a href="about.html" class="topbut login">About</a>
 			</div>
 			<div class="toppage">
 				<p>cephei.us</p>
@@ -27,9 +45,7 @@
 			<div id="infowrapper">
 				<div class="infoslide" id="infoslide">
 					<div class="item">
-						<span></span>
-						<p>cephei.us</p>
-						<p>Community Music Discovery</p>
+						<span></span><p></p><p></p>
 						<p>Discover new music with cephei.us today!</p>
 						<p>Wide ranges of songs submitted by users like you.</p>
 						<p><br>Join our community and start discovering new songs daily!</p>
@@ -38,7 +54,7 @@
 						<br><p>Features I'm looking to implement:</p>
 						<ul><li>Login</li><li>Anti-Spam</li><li>Comments</li><li>Better Design</li><li>More!</li></ul>
 					</div>
-					<div class="item">
+					<!--<div class="item">
 						<span></span>
 						<p>Welcome to cephei.us</p>
 						<p>How to use cephei.us</p>
@@ -47,7 +63,7 @@
 						<p>After logging in, you're free to upload one new post per hour. (Neither is this)</p>
 						<p>For each post, please provide a Youtube link, the song title, the artist, and any description you would like to share! Then watch as your song gets added in realtime to our database, for all users to enjoy!</p><br>
 						<p>Thank you for your contribution to a musically diverse world!</p>
-					</div>
+					</div>-->
 				</div>
 				<a class="aboutclose" onclick="showabout()"><img src="resources/arrow.svg" height="50px" id="closeimg"></img></a>
 			</div>
@@ -68,6 +84,12 @@
 			<div class="content" id="postcontent">
 			</div>
 			<input type="button" value="Load More!" onclick="loadMore()"></input>
+			<div
+  class="fb-like"
+  data-share="true"
+  data-width="450"
+  data-show-faces="true">
+</div>
 			<div class="footer"><p>cephei.us | <a onclick="topscroll()">Top</a> | <a href="about.html">About</a> | 2015</p></div>
 		</div>
 		<script>
@@ -88,14 +110,14 @@
 				var aboutdrop=document.getElementById("infoslide");
 				var icon=document.getElementById("closeimg");
 				if (count1==0){
-					$(aboutdrop).slideDown(400);
+					$(aboutdrop).slideUp(400);
 					count1=1;
 					icon.style.webkitTransform = "rotate(0deg)";
 					icon.element.style.transform = "rotate(0deg)";	
 					icon.element.style.MozTransform = "rotate(0deg)";	
 				}
 				else{
-					$(aboutdrop).slideUp(400);
+					$(aboutdrop).slideDown(400);
 					count1=0;
 					icon.style.webkitTransform = "rotate(180deg)";
 					icon.element.style.transform = "rotate(180deg)";	

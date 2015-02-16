@@ -24,8 +24,8 @@ var initial=1;
 function songpost(){
 	postRef.on('value', function(postSnapshot){
 		var songData=postSnapshot.val();
-		console.log(songData);
-		var objectsData=Object.getOwnPropertyNames(songData);
+
+		var objectsData=Object.getOwnPropertyNames(songData).sort();
 		var length=objectsData.length;
 		while(objectsData[length-i] && i<j){
 			var returnvalue=objectsData[length-i];
@@ -81,5 +81,5 @@ function updateVideo(videoId, title, artist, description){
 	$('<p/>').text(artist).appendTo($(videoDiv));
 	$('<p/>').text(description).appendTo($(videoDiv));
 	$("#postcontent").prepend(videoDiv);
-	$(videoDiv).slideDown(500);
+	$(videoDiv).fadeIn(500);
 }
