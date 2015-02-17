@@ -245,14 +245,16 @@ body::-webkit-scrollbar-thumb {
 }
 
 @media print, screen and (max-width:600px){
-	.content, .infoslide, .about{
+	.flexbox{
+		display:flex;
+	}
+	.content, .infoslide, .about, #post, .item iframe, .infoslide, .item{
 		width:100%;
 	}
 	.item{
 		height:auto;
 	}
 	.item iframe{
-		width:100%;
 		height:60vw;
 		margin:0;
 	}
@@ -264,7 +266,6 @@ body::-webkit-scrollbar-thumb {
 		width:100px;
 	}
 	#post{
-		width:100%;
 		top:48px;
 		padding:0;
 		margin-top:0;

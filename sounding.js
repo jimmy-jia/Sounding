@@ -83,3 +83,20 @@ function updateVideo(videoId, title, artist, description){
 	$("#postcontent").prepend(videoDiv);
 	$(videoDiv).fadeIn(500);
 }
+
+// FB Integration //
+var login=0;
+var userid=null;
+
+$(document).ready(logincheck());
+
+function logincheck(){
+	FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+});
+	if (reponse.status=="connected"){
+		login=1;
+		userid=response.authResponse.userID;
+	}
+
+}

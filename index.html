@@ -15,22 +15,21 @@
 	</head>
 	<body>
 		<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '1413249035642465',
-      xfbml      : true,
-      version    : 'v2.2'
-    });
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script>
+		  	window.fbAsyncInit = function() {
+			    FB.init({
+				    appId      : '1413249035642465',
+				    xfbml      : true,
+				    version    : 'v2.2'
+			    });
+			};
+			(function(d, s, id){
+			    var js, fjs = d.getElementsByTagName(s)[0];
+			    if (d.getElementById(id)) {return;}
+			    js = d.createElement(s); js.id = id;
+			    js.src = "//connect.facebook.net/en_US/sdk.js";
+			    fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));
+		</script>
 		<div class="wrapper">
 			<div class="topbar">
 				<button class="postbutton" onclick="showpost()">+ Post</button>
@@ -44,15 +43,17 @@
 			</div>
 			<div id="infowrapper">
 				<div class="infoslide" id="infoslide">
-					<div class="item">
-						<span></span><p></p><p></p>
-						<p>Discover new music with cephei.us today!</p>
-						<p>Wide ranges of songs submitted by users like you.</p>
-						<p><br>Join our community and start discovering new songs daily!</p>
-						<br><p>This website is still in development! Please ignore my test posts :)
-						<br>Please email me any suggestions at <a href="mailto:jimmy.j.jia@gmail.com">jimmy.j.jia@gmail.com</a></p>
-						<br><p>Features I'm looking to implement:</p>
-						<ul><li>Login</li><li>Anti-Spam</li><li>Comments</li><li>Better Design</li><li>More!</li></ul>
+					<div class="flexbox">
+						<div class="item">
+							<span></span><p></p><p></p>
+							<p>Discover new music with cephei.us today!</p>
+							<p>Wide ranges of songs submitted by users like you.</p>
+							<p><br>Join our community and start discovering new songs daily!</p>
+							<br><p>This website is still in development! Please ignore my test posts :)
+							<br>Please email me any suggestions at <a href="mailto:jimmy.j.jia@gmail.com">jimmy.j.jia@gmail.com</a></p>
+							<br><p>Features I'm looking to implement:</p>
+							<ul><li>Login</li><li>Anti-Spam</li><li>Comments</li><li>Better Design</li><li>More!</li></ul>
+						</div>
 					</div>
 					<!--<div class="item">
 						<span></span>
@@ -84,12 +85,6 @@
 			<div class="content" id="postcontent">
 			</div>
 			<input type="button" value="Load More!" onclick="loadMore()"></input>
-			<div
-  class="fb-like"
-  data-share="true"
-  data-width="450"
-  data-show-faces="true">
-</div>
 			<div class="footer"><p>cephei.us | <a onclick="topscroll()">Top</a> | <a href="about.html">About</a> | 2015</p></div>
 		</div>
 		<script>
