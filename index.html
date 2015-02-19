@@ -34,39 +34,29 @@
 			<div class="topbar">
 				<button class="postbutton" onclick="showpost()">+ Post</button>
 				<button class="login" onclick="login">Login</button>
-				<!--<input id="search" placeholder="Search"></input>-->
 				<a href="about.html" class="topbut login">About</a>
+				<input id="search" placeholder="Search"></input>
 			</div>
 			<div class="toppage">
 				<p>cephei.us</p>
 				<p>Realtime Music Discovery</p>
-			</div>
-			<div id="infowrapper">
-				<div class="infoslide" id="infoslide">
-					<div class="flexbox">
-						<div class="item">
-							<span></span><p></p><p></p>
-							<p>Discover new music with cephei.us today!</p>
-							<p>Wide ranges of songs submitted by users like you.</p>
-							<p><br>Join our community and start discovering new songs daily!</p>
-							<br><p>This website is still in development! Please ignore my test posts :)
-							<br>Please email me any suggestions at <a href="mailto:jimmy.j.jia@gmail.com">jimmy.j.jia@gmail.com</a></p>
-							<br><p>Features I'm looking to implement:</p>
-							<ul><li>Login</li><li>Anti-Spam</li><li>Comments</li><li>Better Design</li><li>More!</li></ul>
+				<div id="infowrapper">
+					<div class="infoslide" id="infoslide">
+						<div class="flexbox">
+							<div class="item">
+								<span></span><p></p><p></p>
+								<p>Discover new music with cephei.us today!</p>
+								<p>Wide ranges of songs submitted by users like you.</p>
+								<p><br>Join our community and start discovering new songs daily!</p>
+								<br><p>This website is still in development! Please ignore my test posts :)
+								<br>Please email me any suggestions at <a href="mailto:jimmy.j.jia@gmail.com">jimmy.j.jia@gmail.com</a></p>
+								<br><p>Features I'm looking to implement:</p>
+								<ul><li>Login</li><li>Anti-Spam</li><li>Comments</li><li>Better Design</li><li>More!</li></ul>
+							</div>
 						</div>
 					</div>
-					<!--<div class="item">
-						<span></span>
-						<p>Welcome to cephei.us</p>
-						<p>How to use cephei.us</p>
-						<p>Click the login button on the top right and login through Facebook. (Not implemented yet)</p><br>
-						<p>Facebook login is only used for anti-spam prevention, we will not use your information in any way, nor will we post on Facebook on your behalf.</p><br>
-						<p>After logging in, you're free to upload one new post per hour. (Neither is this)</p>
-						<p>For each post, please provide a Youtube link, the song title, the artist, and any description you would like to share! Then watch as your song gets added in realtime to our database, for all users to enjoy!</p><br>
-						<p>Thank you for your contribution to a musically diverse world!</p>
-					</div>-->
+					<a class="aboutclose" onclick="showabout()"><img src="resources/arrow.svg" height="50px" id="closeimg"></img></a>
 				</div>
-				<a class="aboutclose" onclick="showabout()"><img src="resources/arrow.svg" height="50px" id="closeimg"></img></a>
 			</div>
 			<div id="post" class="item">
 				<p>Post</p>
@@ -84,7 +74,7 @@
 			</div>
 			<div class="content" id="postcontent">
 			</div>
-			<input type="button" value="Load More!" onclick="loadMore()"></input>
+			<!--<input type="button" value="Load More!" onclick="loadMore()"></input>-->
 			<div class="footer"><p>cephei.us | <a onclick="topscroll()">Top</a> | <a href="about.html">About</a> | 2015</p></div>
 		</div>
 		<script>
@@ -126,7 +116,7 @@
 			}
 			var loaded=0;
 			$(window).scroll(function () {
-				setTimeout(function(){loaded=1},1500);
+				setTimeout(function(){loaded=1},1200);
 			    if ($(window).scrollTop() >= $(document).height() - $(window).height() - 10) {
 			    	if(loaded==1){
 			      loadMore();}
