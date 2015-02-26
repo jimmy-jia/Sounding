@@ -265,6 +265,7 @@ body::-webkit-scrollbar-thumb {
 	#search{
 		width:50px;
 		transition:width .4s;
+		display:none;
 	}
 	#search:focus, #search:active{
 		width:100px;

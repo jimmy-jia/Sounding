@@ -74,6 +74,7 @@ function loadMore(){
 function topPost(link, title, artist, description){
 	updateVideo(getId(link), title, artist, description);
 	i++;
+	j++;
 }
 function updateVideo(videoId, title, artist, description){
 	var videoDiv = $('<div class="item"><iframe src="https://www.youtube.com/embed/' + videoId + '" frameborder="0" allowfullscreen></iframe></div>').hide();
