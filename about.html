@@ -2,6 +2,8 @@
 <html>
 	<head>
 		<title>cephei.us</title>
+		<meta name="description" content="Cephei.us is a realtime music discovery platform, come join us and see what everyone is listening to!">
+		<meta name="keywords" content="music, cephei, discovery, platform, realtime, community">
 		<meta charset="utf-8">
 		<link href="resources/css/stylesheet.css" rel="stylesheet" type="text/css">
 		<link href="resources/css/fonts.css" rel="stylesheet" type="text/css">
@@ -14,14 +16,24 @@
 			<div class="topbar">
 				<button class="postbutton" onclick="location.href = 'index.html';">Home</button>
 				<button class="login" onclick="login">Login</button>
+				<a href="about.html" class="topbut login">About</a>
+				<form action="search.html" method="GET">
+					<input id="search" placeholder="Search Genre / Tag" name="tag"></input>
+				</form>
+				<img id="searchclicker" src="resources/search.svg" onclick="showsearch()"></img>
 			</div>
-
-
+			<div id="searchbox">
+				<form action="search.html" method="GET">
+					<input id="mobilesearch" placeholder="Search Genre / Tag" name="tag"></input>
+				</form>
+			</div>
 			<div class="toppage">
 				<p>cephei.us</p>
 				<p>Realtime Music Discovery</p>
 			</div>
 			<div class="about">
+				<h3><p>Most Recent Update: 2/26/15</p></h3>
+				<p>Search function has been added! More to come</p>
 				<h3><p>What is cephei.us?</p></h3>
 				<p>cephei.us is a realtime music discovery platform. Named after the contact binary star VW Cephei, the website is intended to help the community easily find new music that other users want to share with others. It is as easy as pressing post and putting in the Youtube link to your favorite song.</p>
 				<h3><p>How was cephei.us made?</p></h3>
@@ -36,13 +48,22 @@
 				<h3><p>Can I see the code?</h3></p>
 				<p>Of course you can! Everything is available on my <a href="https://github.com/jimmy-jia/Sounding" target="_blank">github repository</a>. Feel free to comment or submit pull requests if you have anything you'd like to add or ask!</p>
 			</div>
-
-
-
 			<div class="push"></div>
 		</div>
 		<div class="footer"><p>cephei.us | <a onclick="topscroll()">Top</a> | <a href="about.html">About</a> | 2015</p></div>
 		<script>
+			var count2=0;
+			function showsearch(){
+				var searchdrop=document.getElementById("searchbox");
+				if(count2==0){
+					$(searchdrop).slideDown(400);
+					count2=1;
+				}
+				else{
+					$(searchdrop).slideUp(400);
+					count2=0;
+				}
+			}
 			function topscroll(){
 				$("html, body").animate({
 			            scrollTop: 0

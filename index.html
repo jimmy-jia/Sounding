@@ -13,7 +13,7 @@
 		<script src="https://cdn.firebase.com/js/client/2.1.0/firebase.js"></script>
 		<script src="resources/js/sounding.js"></script>
 	</head>
-	<body>
+	<body onload="loadPage()">
 		<script>
 		  	window.fbAsyncInit = function() {
 			    FB.init({
@@ -35,7 +35,15 @@
 				<button class="postbutton" onclick="showpost()">+ Post</button>
 				<button class="login" onclick="login">Login</button>
 				<a href="about.html" class="topbut login">About</a>
-				<input id="search" placeholder="Search"></input>
+				<form action="search.html" method="GET">
+					<input id="search" placeholder="Search Genre / Tag" name="tag"></input>
+				</form>
+				<img id="searchclicker" src="resources/search.svg" onclick="showsearch()"></img>
+			</div>
+			<div id="searchbox">
+				<form action="search.html" method="GET">
+					<input id="mobilesearch" placeholder="Search Genre / Tag" name="tag"></input>
+				</form>
 			</div>
 			<div class="toppage">
 				<p>cephei.us</p>
@@ -59,7 +67,7 @@
 				</div>
 			</div>
 			<div id="post" class="item">
-				<p>Post</p>
+				<p></p>
 				<p>Contribute a song to the community!</p>
 				<p></p>
 				<form id="postform" onsubmit="newPost()">
@@ -67,6 +75,7 @@
 					<input type="text" name="title" placeholder="Song Title"></input>
 					<input type="text" name="artist" placeholder="Artist"></input>
 					<textarea rows="6" wrap="hard" name="description" placeholder="Description"></textarea>
+					<input type="text" name="tags" placeholder="Genres/Tags"></input>
 					<input type="button" value="Submit" onclick="newPost()"></input>
 					<input type="reset" value="Reset"></input>
 					<input type="button" value="Close" onclick="showpost()"></input>
@@ -74,12 +83,14 @@
 			</div>
 			<div class="content" id="postcontent">
 			</div>
+			<div class="push"></div>
 			<!--<input type="button" value="Load More!" onclick="loadMore()"></input>-->
-			<div class="footer"><p>cephei.us | <a onclick="topscroll()">Top</a> | <a href="about.html">About</a> | 2015</p></div>
 		</div>
+		<div class="footer"><p>cephei.us | <a onclick="topscroll()">Top</a> | <a href="about.html">About</a> | 2015</p></div>
 		<script>
 			var count=0;
 			var count1=1;
+			var count2=0;
 			function showpost(){
 				var dropper=document.getElementById("post");
 				if (count==0){
@@ -107,6 +118,17 @@
 					icon.style.webkitTransform = "rotate(180deg)";
 					icon.element.style.transform = "rotate(180deg)";	
 					icon.element.style.MozTransform = "rotate(180deg)";	
+				}
+			}
+			function showsearch(){
+				var searchdrop=document.getElementById("searchbox");
+				if(count2==0){
+					$(searchdrop).slideDown(400);
+					count2=1;
+				}
+				else{
+					$(searchdrop).slideUp(400);
+					count2=0;
 				}
 			}
 			function topscroll(){

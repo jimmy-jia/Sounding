@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>cephei.us</title>
+		<meta name="description" content="Cephei.us is a realtime music discovery platform, come join us and see what everyone is listening to!">
+		<meta name="keywords" content="music, cephei, discovery, platform, realtime, community">
+		<meta charset="utf-8">
+		<link href="resources/css/stylesheet.css" rel="stylesheet" type="text/css">
+		<link href="resources/css/fonts.css" rel="stylesheet" type="text/css">
+		<link rel="icon" href="favicon.ico">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<script src='resources/js/jquery.min.js'></script>
+		<script src="https://cdn.firebase.com/js/client/2.1.0/firebase.js"></script>
+		<script src="resources/js/sounding.js"></script>
+	</head>
+	<body onload="getUrlVars()">
+		<div class="wrapper">
+			<div class="topbar">
+				<button class="postbutton" onclick="location.href = 'index.html';">Home</button>
+				<button class="login" onclick="login">Login</button>
+				<a href="about.html" class="topbut login">About</a>
+				<form action="search.html" method="GET">
+					<input id="search" placeholder="Search Genre / Tag" name="tag"></input>
+				</form>
+				<img id="searchclicker" src="resources/search.svg" onclick="showsearch()"></img>
+			</div>
+			<div id="searchbox">
+				<form action="search.html" method="GET">
+					<input id="mobilesearch" placeholder="Search Genre / Tag" name="tag"></input>
+				</form>
+			</div>
+			<div class="toppage">
+				<p>cephei.us</p>
+				<p>Realtime Music Discovery</p>
+			</div>
+			<div class="content" id="postcontent">
+			</div>
+			<div class="push"></div>
+		</div>
+		<div class="footer"><p>cephei.us | <a onclick="topscroll()">Top</a> | <a href="about.html">About</a> | 2015</p></div>
+		<script>
+			var count2=0;
+			function showsearch(){
+				var searchdrop=document.getElementById("searchbox");
+				if(count2==0){
+					$(searchdrop).slideDown(400);
+					count2=1;
+				}
+				else{
+					$(searchdrop).slideUp(400);
+					count2=0;
+				}
+			}
+			function topscroll(){
+				$("html, body").animate({
+			            scrollTop: 0
+			        }, 600);
+			}
+		</script>
+	</body>
+</html>

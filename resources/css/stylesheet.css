@@ -40,7 +40,7 @@ li{
 	width:100%;
 	box-shadow:0 0px 5px 1px #e6e6e6;
 }
-.topbar input, .login{
+.topbar input, .login, .topbar > form{
 	float:right;
 }
 .topbut{
@@ -70,6 +70,9 @@ li{
 	padding-left:10px;
 	transition:background-color .4s;
 }
+#searchclicker{
+	display:none;
+}
 button, input[type=button], input[type=reset], input[type=submit]{
 	font-size:150%;
 	transition:background-color .4s;
@@ -84,7 +87,7 @@ button:hover, .topbut:hover{
 	background-color:#fcfcfc;
 	color:orange;
 }
-button:active, button:focus, #search{
+button:active, button:focus, #search, #mobilesearch, #mobilesearch:focus, #mobilesearch:active{
 	outline:0;
 }
 .wrapper > input[type=button]{
@@ -192,15 +195,23 @@ form input[type=text], textarea{
 	display:block;
 	font-family:'Lato', Sans-serif;
 }
-form input[type=button]:nth-child(5){
+form input[type=button]:nth-child(6){
 	margin-left:24%;
 	margin-top:10px;
 }
-div input[type=button]:nth-child(6){
+div input[type=button]:nth-child(7){
 	display:block;
 	margin:0 auto;
 	margin-bottom:50px;
 	padding:10px;
+}
+.sorry{
+	font-family:"Open-Sans", Sans-serif;
+	font-size:300%;
+	color:#aaa;
+	width:80%;
+	text-align:center;
+	margin:0 auto;
 }
 .push, .footer{
 	height:50px;
@@ -267,8 +278,32 @@ body::-webkit-scrollbar-thumb {
 		transition:width .4s;
 		display:none;
 	}
-	#search:focus, #search:active{
-		width:100px;
+	#mobilesearch{
+		display:block;
+		height:40px;
+		border:1px solid #2c3e50;
+		width:90%;
+		border-radius:30px;
+		margin:0 auto;
+		text-align:center;
+	}
+	#searchclicker{
+		display:inline-block;
+		float:right;
+		height:25px;
+		margin: 14px 7px 0 0;
+	}
+	#searchclicker:hover{
+		cursor:pointer;
+	}
+	#searchbox{
+		border-bottom:1px solid #2c3e50;
+		display:none;
+		height:50px;
+		padding-top:50px;
+	}
+	#searchbox form{
+		padding-top:3px;
 	}
 	#post{
 		top:48px;
