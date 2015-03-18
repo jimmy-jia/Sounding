@@ -105,11 +105,8 @@ button:active, button:focus, #search, #mobilesearch, #mobilesearch:focus, #mobil
 	text-align:center;
 	background-color:white;
 	padding:50px 0;
-	padding-top:150px;
+	padding-top:100px;
 	box-shadow:0 -1px 10px 1px #c6c6c6;
-}
-.toppage p:nth-child(2){
-	margin-bottom:20px;
 }
 .infoslide{
 	display:none;
@@ -202,11 +199,18 @@ button:active, button:focus, #search, #mobilesearch, #mobilesearch:focus, #mobil
 	box-shadow:0 0 8px black;
 }
 form input[type=text], textarea{
+	border:none;
+	border-top: 1px solid #ddd;
 	padding:10px;
 	width:70%;
 	margin:10px auto;
 	display:block;
 	font-family:'Lato', Sans-serif;
+	transition: box-shadow .4s;
+}
+form input[type=text]:focus, form input[type=text]:active, textarea:focus, textarea:active{
+	outline:0;
+	box-shadow:0 0px 0px 3px #ddd;
 }
 form input[type=button]:nth-child(6){
 	margin-left:24%;
