@@ -79,6 +79,8 @@
 				$('#infoup').fadeToggle(400);
 			}
 			function cinemaclose(){
+				var cinemaDiv=document.getElementById('cinema');
+				cinemaDiv.childNodes[3].src="";
 				$('#cinema').fadeToggle(400);
 				$('#modalshadow').fadeToggle(400);
 			}
