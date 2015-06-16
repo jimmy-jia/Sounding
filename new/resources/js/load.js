@@ -163,7 +163,7 @@ function cinema(id){
 	current=id;
 	var cinemaDiv=document.getElementById('cinema');
 	var holdDiv = document.getElementById(id);
-	cinemaDiv.childNodes[3].src='http://www.youtube.com/embed/' + id;
+	cinemaDiv.childNodes[3].src='http://www.youtube.com/embed/' + id+ "?color=white";
 	console.log(holdDiv.childNodes)
 	cinemaDiv.childNodes[5].innerHTML=holdDiv.childNodes[2].innerHTML;
 	cinemaDiv.childNodes[7].innerHTML=holdDiv.childNodes[3].innerHTML;
