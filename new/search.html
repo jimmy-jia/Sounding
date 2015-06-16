@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>cephei.us</title>
+		<meta name="description" content="Cephei.us is a realtime music discovery platform, come join us and see what everyone is listening to!">
+		<meta name="keywords" content="music, cephei, discovery, platform, realtime, community">
+		<meta charset="utf-8">
+		<link href="stylesheet.css" rel="stylesheet" type="text/css">
+		<link href="../resources/css/fonts.css" rel="stylesheet" type="text/css">
+		<link rel="icon" href="../favicon.ico">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<script src='../resources/js/jquery.min.js'></script>
+		<script src="https://cdn.firebase.com/js/client/2.1.0/firebase.js"></script>
+		<script src="resources/js/load.js"></script>
+	</head>
+	<body onload="getUrlVars()">
+		<nav>
+			<div class="logo"><a href="index.html">cephei.us</a></div>
+			<button class="mobsearch" onclick="mobsearch()"></button>
+			<div class="search">
+				<form action="search.html" method="GET">
+					<input id="search" placeholder="Search Genre / Tag" name="tag"></input>
+				</form>
+			</div>
+			<button id="info" onclick="info()"></button>
+			<button id="account"></button>
+		</nav>
+		<button class="create" onclick="post()"></button>
+		<div id="popup">
+			<p>New Post</p>
+			<form id="postform" onsubmit="submitPost()">
+				<input type="text" id="posturl" name="url" placeholder="Youtube URL"></input>
+				<input type="text" id="posttitle" name="title" placeholder="Song Title"></input>
+				<input type="text" id="postartist" name="artist" placeholder="Artist"></input>
+				<textarea rows="6" id="postdescription" wrap="hard" name="description" placeholder="Description"></textarea>
+				<input type="text" id="posttags" name="tags" placeholder="Genres/Tags"></input>
+				<!--<input type="reset" value="Reset"></input>-->
+				<a class="submit" onclick="submitPost()"></a>
+			</form>
+			<button class="close" onclick="post()"></button>
+		</div>
+		<div id="infoup">
+			<p>About</p>
+			<p>Hi! This is cephei.us</p>
+			<p>This is a realtime music sharing platform, free for anyone to use. Feel free to browse the different songs (don't worry, they'll auto load for you), or search for something specific. Every song has been submitted by a user like you, and you too, are free to send in a song of your own! Just click the post button on the lower right and fill out the form!</p>
+			<button class="close" onclick="info()"></button>
+		</div>
+		<div class="main">
+			<div id="posts">
+			</div>
+		</div>
+		<div id="modalshadow"></div>
+		<div id="cinema">
+			<p class="cinheader">CINEMA</p>
+			<iframe frameborder="0" allowfullscreen></iframe>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+			<button class="close" onclick="cinemaclose()"></button>
+			<button class="prev" onclick="prev()"></button>
+			<button class="next" onclick="next()"></button>
+		</div>
+		<script>
+			var loaded=0;
+			$(window).scroll(function () {
+				setTimeout(function(){loaded=1},100);
+			    if ($(window).scrollTop() >= $(document).height() - $(window).height() - 10) {
+			    	if(loaded==1){
+			      loadMore();}
+			   }
+			});
+			function post(){
+				$('#infoup').fadeOut();
+				$('#popup').fadeToggle(400);
+			}
+			function info(){
+				$('#popup').fadeOut();
+				$('#infoup').fadeToggle(400);
+			}
+			function cinemaclose(){
+				$('#cinema').fadeToggle(400);
+				$('#modalshadow').fadeToggle(400);
+			function mobsearch(){
+				$('.search').slideToggle(400);
+			}
+		</script>
+	</body>
+</html>
