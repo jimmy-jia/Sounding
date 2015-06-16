@@ -149,15 +149,15 @@ function next(){
 	var idx=idbank.indexOf(current);
 	if(idx+1<idbank.length)
 		cinema(idbank[idx+1]);
-	else
-		$(".next").shake(3, 8, 500);
+	/*else
+		$(".next").shake(3, 8, 500);*/
 }
 function prev(){
 	var idx=idbank.indexOf(current);
 	if(idx>0)
 		cinema(idbank[idx-1]);
-	else
-		$(".prev").shake(3, 8, 500);
+	/*else
+		$(".prev").shake(3, 8, 500);*/
 }
 function cinema(id){
 	current=id;
