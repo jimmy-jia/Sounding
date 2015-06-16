@@ -51,7 +51,7 @@ p {
     color: white;
     text-decoration: none;
     font-size: 150%;
-    font-family: "Open Sans Condensed"; }
+    font-family: "Open Sans Condensed", sans-serif !important; }
 
 .main #posts {
   padding-top: 60px;
@@ -74,12 +74,12 @@ p {
       display: block;
       padding: 0 10px;
       box-sizing: border-box;
-      font-family: "Lato"; }
+      font-family: "Lato", sans-serif !important; }
     .main #posts > div p:nth-child(3) {
       width: 100%;
       background-color: #2196F3;
       font-size: 120%;
-      font-family: "Open Sans";
+      font-family: "Open Sans", sans-serif !important;
       margin-top: -5px;
       padding: 5px 10px;
       color: white; }
@@ -120,7 +120,7 @@ p {
   padding-bottom: 80px; }
   #popup p {
     color: white;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Montserrat", sans-serif !important;
     font-size: 150%;
     display: inline-block;
     padding: 15px;
@@ -143,11 +143,11 @@ p {
   max-width: 100%;
   background-color: #212121;
   color: white;
-  font-family: "Lato";
+  font-family: "Lato", sans-serif !important;
   box-sizing: border-box; }
   #infoup p:first-child {
     font-size: 150%;
-    font-family: "Montserrat";
+    font-family: "Montserrat", sans-serif !important;
     text-align: center;
     background-color: #2196F3;
     padding: 16px; }
@@ -172,7 +172,7 @@ input, textarea {
   border-bottom: 2px solid #2196F3;
   transition: background-color 0.4s;
   box-sizing: border-box;
-  font-family: "Open Sans", sans-serif; }
+  font-family: "Open Sans", sans-serif !important; }
   input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
     color: #E0E0E0; }
   input::-moz-placeholder, textarea::-moz-placeholder {
@@ -296,18 +296,18 @@ textarea {
     vertical-align: middle;
     display: inline-block;
     color: white;
-    font-family: "Lato", sans-serif; }
+    font-family: "Lato", sans-serif !important; }
   #cinema p:first-child {
     box-sizing: border-box;
     padding: 15px;
     width: 100%;
     text-align: center;
     background-color: #2196F3;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Montserrat", sans-serif !important;
     font-size: 150%; }
   #cinema p:nth-child(3) {
     background-color: white;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Open Sans", sans-serif !important;
     font-size: 150%;
     padding: 20px;
     color: #212121; }
@@ -366,13 +366,13 @@ textarea {
   padding: 20px;
   text-align: center;
   font-size: 200%;
-  font-family: "Lato", sans-serif;
+  font-family: "Lato", sans-serif !important;
   padding-bottom: 30px;
   color: #555; }
 
 @media (max-width: 700px) {
   .search {
-    top: 50px;
+    top: 49px;
     display: none;
     position: absolute;
     background-color: #212121;
@@ -389,6 +389,9 @@ textarea {
     position: absolute;
     right: 90px;
     top: 5px; }
+
+  .main #posts > div {
+    margin: 0; }
 
   #cinema {
     z-index: 101;
