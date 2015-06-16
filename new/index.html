@@ -64,11 +64,11 @@
 		<script>
 			var loaded=0;
 			$(window).scroll(function () {
-				setTimeout(function(){loaded=1},100);
+				setTimeout(function(){loaded=1},1);
 			    if ($(window).scrollTop() >= $(document).height() - $(window).height() - 10) {
 			    	if(loaded==1){
-			      loadMore();}
-			   }
+			    		loadMore();}
+				}
 			});
 			function post(){
 				$('#infoup').fadeOut();
