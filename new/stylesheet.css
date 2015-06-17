@@ -46,15 +46,16 @@ p {
   height: 100%;
   display: inline-block;
   padding: 9px 10px;
-  background-color: #2196F3; }
+  /*background-color: $main-color */
+  background-image: linear-gradient(#2196f3, rgba(33, 150, 243, 0.3)); }
   .logo a {
     color: white;
     text-decoration: none;
     font-size: 150%;
-    font-family: "Open Sans Condensed", sans-serif !important; }
+    font-family: "Poiret One", sans-serif !important; }
 
 .main #posts {
-  padding-top: 60px;
+  padding-top: 40px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center; }
@@ -100,15 +101,20 @@ p {
         left: 122px;
         margin: auto;
         width: 75px;
-        height: 75px; }
+        height: 75px;
+        -webkit-filter: drop-shadow(0px 0px 5px #000);
+        filter: drop-shadow(0px 0px 5px #000);
+        animation: filter 0.4s, -webkit-filter 0.4s; }
         .main #posts > div div:nth-child(2) img:hover {
-          cursor: pointer; }
+          cursor: pointer;
+          -webkit-filter: drop-shadow(0px 0px 10px #000);
+          filter: drop-shadow(0px 0px 10px #000); }
 
 #popup {
   display: none;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.23), 0 10px 40px rgba(0, 0, 0, 0.19);
   position: fixed;
-  z-index: 10;
+  z-index: 101;
   left: 0;
   right: 0;
   margin: 0 auto;
@@ -143,7 +149,7 @@ p {
   max-width: 100%;
   background-color: #212121;
   color: white;
-  font-family: "Lato", sans-serif !important;
+  font-family: "Open Sans", sans-serif !important;
   box-sizing: border-box; }
   #infoup p:first-child {
     font-size: 150%;
@@ -152,13 +158,8 @@ p {
     background-color: #2196F3;
     padding: 16px; }
   #infoup p:nth-child(2) {
-    font-size: 125%;
-    text-align: center;
-    padding: 10px; }
-  #infoup p:nth-child(3) {
     color: #888;
-    padding: 5px 25px;
-    padding-bottom: 25px; }
+    padding: 25px 25px; }
 
 input, textarea {
   display: block;
@@ -368,8 +369,11 @@ textarea {
   font-size: 200%;
   font-family: "Lato", sans-serif !important;
   padding-bottom: 30px;
+  margin-top: 30px;
   color: #555;
   box-sizing: border-box;
+  max-width: 100%;
+  width: 400px;
   max-width: 100%; }
 
 @media (max-width: 700px) {
@@ -393,7 +397,11 @@ textarea {
     top: 5px; }
 
   .main #posts > div {
-    margin: 0; }
+    margin: 0;
+    margin-bottom: 20px; }
+
+  .main.find #posts {
+    padding-top: 70px; }
 
   #cinema {
     z-index: 101;
@@ -487,5 +495,24 @@ textarea {
 .animated.infinite:hover {
   -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite; }
+
+.text {
+  font: 440% "Poiret One";
+  fill: url(#gr-simple);
+  -webkit-filter: drop-shadow(0px 0px 5px #000);
+  filter: drop-shadow(0px 0px 5px #000); }
+
+.undertext {
+  font: 140% "Open Sans Condensed", sans-serif;
+  fill: url(#gr-simple);
+  -webkit-filter: drop-shadow(0px 0px 5px #000);
+  filter: drop-shadow(0px 0px 5px #000); }
+
+#header {
+  padding-top: 60px;
+  padding-bottom: 20px;
+  width: 100%;
+  background-color: #212121;
+  box-shadow: inset 0 -6px 10px -6px #fff; }
 
 /*# sourceMappingURL=stylesheet.css.map */

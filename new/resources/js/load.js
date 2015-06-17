@@ -172,3 +172,4 @@ function cinema(id){
 	$('#cinema').fadeIn(400);
 	$('#modalshadow').fadeIn(400);
 }
+
