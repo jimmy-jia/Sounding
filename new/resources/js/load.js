@@ -75,7 +75,7 @@ function loader(){
 // Post Card //
 function createPost(id, title, artist, description, tags){
 	var pid="&quot;"+id+"&quot;"
-	var div = $('<div class="item" id="'+id+'"><img src="http://img.youtube.com/vi/' + id + '/mqdefault.jpg"></img><div><img onclick="cinema('+pid+')"></img></div></div>');
+	var div = $('<div class="item" id="'+id+'"><img src="http://img.youtube.com/vi/' + id + '/mqdefault.jpg" onclick="cinema('+pid+')"></img><div><img onclick="cinema('+pid+')"></img></div></div>');
 	$('<p/>').text(title).appendTo($(div));
 	$('<p/>').text(artist).appendTo($(div));
 	$('<p/>').text(description).appendTo($(div));
