@@ -188,7 +188,7 @@ function authentication(){
 	if(authData){
 		$('#logintxt').text(getName(authData));
 		var onk = document.getElementById('auth');
-		onk.onclick="logout()";
+		onk.onclick=logout();
 	}
 }
 
@@ -207,7 +207,7 @@ function logout(){
 	ref.unauth();
 	$('#logintxt').text('Login');
 	var onk = document.getElementById('auth');
-	onk.onclick="login()";
+	onk.onclick=login();
 }
 
 function login(){
