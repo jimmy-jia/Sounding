@@ -1,6 +1,3 @@
-@-moz-keyframes spin {
-  100% {
-    -moz-transform: rotate(360deg); } }
 @-webkit-keyframes spin {
   100% {
     -webkit-transform: rotate(360deg); } }
@@ -47,6 +44,7 @@ p {
   display: inline-block;
   padding: 9px 10px;
   /*background-color: $main-color */
+  background-image: -webkit-linear-gradient(#2196f3, rgba(33, 150, 243, 0.3));
   background-image: linear-gradient(#2196f3, rgba(33, 150, 243, 0.3)); }
   .logo a {
     color: white;
@@ -65,11 +63,14 @@ p {
   #login div {
     padding: 20px;
     padding-left: 100px;
-    transition: background-color 0.4s;
+    -webkit-transition: background-color 0.4s;
+            transition: background-color 0.4s;
+    background: -webkit-linear-gradient(left, #212121 50%, rgba(255, 255, 255, 0.2));
     background: linear-gradient(to right, #212121 50%, rgba(255, 255, 255, 0.2));
     background-size: 250% 100%;
     background-position: left bottom;
-    transition: all 0.5s cubic-bezier(0.71, 0.34, 0.28, 0.89);
+    -webkit-transition: all 0.5s cubic-bezier(0.71, 0.34, 0.28, 0.89);
+            transition: all 0.5s cubic-bezier(0.71, 0.34, 0.28, 0.89);
     border-top: 1px solid rgba(255, 255, 255, 0.2);
     border-bottom: 1px solid rgba(0, 0, 0, 0.6); }
     #login div:hover {
@@ -81,11 +82,12 @@ p {
       font-family: "Lato";
       text-transform: uppercase;
       color: white;
-      transition: color 0.4s; }
+      -webkit-transition: color 0.4s;
+              transition: color 0.4s; }
       #login div span:hover {
         cursor: pointer;
         color: #2196F3; }
-  #login #auth::before, #login #mtags::before, #login #mabout::before, #login #msettings::before {
+  #login #auth:before, #login #mtags:before, #login #mabout:before, #login #msettings:before {
     content: "";
     background-image: url(resources/icons/accountc.svg);
     width: 44px;
@@ -95,23 +97,36 @@ p {
     margin-top: -12px;
     background-size: cover;
     -webkit-filter: drop-shadow(0px 0px 5px #000);
-    filter: drop-shadow(0px 0px 5px #000);
-    animation: filter 0.4s, -webkit-filter 0.4s; }
-    #login #auth::before:hover, #login #mtags::before:hover, #login #mabout::before:hover, #login #msettings::before:hover {
+    filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feGaussianBlur in="SourceAlpha" stdDeviation="5" /><feOffset dx="1" dy="1" result="offsetblur" /><feFlood flood-color="rgba(0,0,0,1)" /><feComposite in2="offsetblur" operator="in" /><feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge></filter></svg>#filter');
+    -webkit-filter: drop-shadow(0px 0px 5px #000);
+            filter: drop-shadow(0px 0px 5px #000);
+    -webkit-animation: filter 0.4s, -webkit-filter 0.4s;
+            animation: filter 0.4s, -webkit-filter 0.4s; }
+    #login #auth:before:hover, #login #mtags:before:hover, #login #mabout:before:hover, #login #msettings:before:hover {
       -webkit-filter: drop-shadow(0px 0px 10px #000);
-      filter: drop-shadow(0px 0px 10px #000); }
-  #login #mtags::before {
+      filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feGaussianBlur in="SourceAlpha" stdDeviation="10" /><feOffset dx="1" dy="1" result="offsetblur" /><feFlood flood-color="rgba(0,0,0,1)" /><feComposite in2="offsetblur" operator="in" /><feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge></filter></svg>#filter');
+      -webkit-filter: drop-shadow(0px 0px 10px #000);
+              filter: drop-shadow(0px 0px 10px #000); }
+  #login #mtags:before {
     background-image: url(resources/icons/sort.svg); }
-  #login #mabout::before {
+  #login #mabout:before {
     background-image: url(resources/icons/help.svg); }
-  #login #msettings::before {
+  #login #msettings:before {
     background-image: url(resources/icons/settings.svg); }
 
 .main #posts {
   padding-top: 55px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center; }
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
   .main #posts > div {
     margin: 10px;
     width: 320px;
@@ -119,7 +134,8 @@ p {
     padding-bottom: 5px;
     display: inline-block;
     background-color: white;
-    transition: all 0.4s;
+    -webkit-transition: all 0.4s;
+            transition: all 0.4s;
     box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12); }
     .main #posts > div:hover {
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.23), 0 10px 40px rgba(0, 0, 0, 0.19); }
@@ -156,12 +172,17 @@ p {
         width: 75px;
         height: 75px;
         -webkit-filter: drop-shadow(0px 0px 5px #000);
-        filter: drop-shadow(0px 0px 5px #000);
-        animation: filter 0.4s, -webkit-filter 0.4s; }
+        filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feGaussianBlur in="SourceAlpha" stdDeviation="5" /><feOffset dx="1" dy="1" result="offsetblur" /><feFlood flood-color="rgba(0,0,0,1)" /><feComposite in2="offsetblur" operator="in" /><feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge></filter></svg>#filter');
+        -webkit-filter: drop-shadow(0px 0px 5px #000);
+                filter: drop-shadow(0px 0px 5px #000);
+        -webkit-animation: filter 0.4s, -webkit-filter 0.4s;
+                animation: filter 0.4s, -webkit-filter 0.4s; }
         .main #posts > div div:nth-child(2) img:hover {
           cursor: pointer;
           -webkit-filter: drop-shadow(0px 0px 10px #000);
-          filter: drop-shadow(0px 0px 10px #000); }
+          filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feGaussianBlur in="SourceAlpha" stdDeviation="10" /><feOffset dx="1" dy="1" result="offsetblur" /><feFlood flood-color="rgba(0,0,0,1)" /><feComposite in2="offsetblur" operator="in" /><feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge></filter></svg>#filter');
+          -webkit-filter: drop-shadow(0px 0px 10px #000);
+                  filter: drop-shadow(0px 0px 10px #000); }
 
 #popup {
   display: none;
@@ -217,7 +238,8 @@ p {
 
 #tags a {
   color: white;
-  transition: color 0.4s; }
+  -webkit-transition: color 0.4s;
+          transition: color 0.4s; }
   #tags a:hover {
     color: #2196F3; }
 
@@ -231,7 +253,8 @@ input, textarea {
   color: white;
   border: 0;
   border-bottom: 2px solid #2196F3;
-  transition: background-color 0.4s;
+  -webkit-transition: background-color 0.4s;
+          transition: background-color 0.4s;
   box-sizing: border-box;
   font-family: "Open Sans", sans-serif !important; }
   input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
@@ -273,7 +296,7 @@ textarea {
   display: inline-block;
   position: relative;
   top: -5px; }
-  .search::after {
+  .search:after {
     position: absolute;
     top: 5px;
     right: 0;
@@ -297,7 +320,6 @@ textarea {
   right: 5px; }
   #account:hover {
     -webkit-animation: bounce 1.2s;
-    -moz-animation: bounce 1.2s;
     animation: bounce 1.2s; }
 
 .close {
@@ -310,7 +332,6 @@ textarea {
   height: 44px; }
   .close:hover {
     -webkit-animation: spin 1.2s ease-in-out;
-    -moz-animation: spin 1.2s linear;
     animation: spin 1.2s ease-in-out; }
 
 .create {
@@ -326,7 +347,8 @@ textarea {
   border-radius: 50%;
   border: 8px solid #2196F3;
   background-color: #2196F3;
-  transition: background-color 0.4s, border 0.4s, box-shadow 0.4s;
+  -webkit-transition: background-color 0.4s, border 0.4s, box-shadow 0.4s;
+          transition: background-color 0.4s, border 0.4s, box-shadow 0.4s;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.23), 0 10px 40px rgba(0, 0, 0, 0.19); }
   .create:hover, .create:active, .create:focus {
     background-color: #1976D2;
@@ -405,7 +427,8 @@ textarea {
   background-size: cover;
   width: 80px;
   height: 80px;
-  transition: background-color 0.4s; }
+  -webkit-transition: background-color 0.4s;
+          transition: background-color 0.4s; }
   .next:hover {
     background-color: #212121; }
 
@@ -419,7 +442,8 @@ textarea {
   background-size: cover;
   width: 80px;
   height: 80px;
-  transition: background-color 0.4s; }
+  -webkit-transition: background-color 0.4s;
+          transition: background-color 0.4s; }
   .prev:hover {
     background-color: #212121; }
 
@@ -445,7 +469,7 @@ textarea {
     background-color: #212121;
     box-sizing: border-box;
     border-top: 1px solid #2196F3; }
-    .search::after {
+    .search:after {
       display: none; }
     .search #search {
       width: 100%; }
@@ -550,7 +574,8 @@ textarea {
   -webkit-animation-name: bounce;
   animation-name: bounce;
   -webkit-transform-origin: center bottom;
-  transform-origin: center bottom; }
+  -ms-transform-origin: center bottom;
+      transform-origin: center bottom; }
 
 .animated:hover {
   -webkit-animation-duration: 1s;
@@ -566,13 +591,17 @@ textarea {
   font: 440% "Poiret One";
   fill: url(#gr-simple);
   -webkit-filter: drop-shadow(0px 0px 5px #000);
-  filter: drop-shadow(0px 0px 5px #000); }
+  filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feGaussianBlur in="SourceAlpha" stdDeviation="5" /><feOffset dx="1" dy="1" result="offsetblur" /><feFlood flood-color="rgba(0,0,0,1)" /><feComposite in2="offsetblur" operator="in" /><feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge></filter></svg>#filter');
+  -webkit-filter: drop-shadow(0px 0px 5px #000);
+          filter: drop-shadow(0px 0px 5px #000); }
 
 .undertext {
   font: 140% "Open Sans Condensed", sans-serif;
   fill: url(#gr-simple);
   -webkit-filter: drop-shadow(0px 0px 5px #000);
-  filter: drop-shadow(0px 0px 5px #000); }
+  filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feGaussianBlur in="SourceAlpha" stdDeviation="5" /><feOffset dx="1" dy="1" result="offsetblur" /><feFlood flood-color="rgba(0,0,0,1)" /><feComposite in2="offsetblur" operator="in" /><feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge></filter></svg>#filter');
+  -webkit-filter: drop-shadow(0px 0px 5px #000);
+          filter: drop-shadow(0px 0px 5px #000); }
 
 #header {
   padding-top: 60px;
@@ -580,5 +609,3 @@ textarea {
   width: 100%;
   background-color: #212121;
   box-shadow: inset 0 -6px 10px -6px #fff; }
-
-/*# sourceMappingURL=stylesheet.css.map */

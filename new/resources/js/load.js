@@ -175,7 +175,6 @@ ref.onAuth(authentication);
 var isNewUser = true;
 
 function authentication(){
-	console.log(ref.getAuth());
 	authData = ref.getAuth();
 	if (authData && isNewUser) {
 		// save the user's profile into Firebase so we can list users,
@@ -205,6 +204,7 @@ function getName(authData) {
 
 function logout(){
 	ref.unauth();
+	console.log('Logged Out');
 	$('#logintxt').text('Login');
 	var onk = document.getElementById('auth');
 	onk.onclick=login;
