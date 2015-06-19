@@ -133,7 +133,8 @@ p {
     margin: 0;
     width: 100%;
     box-sizing: border-box;
-    background-color: #2196F3; }
+    background-color: #2196F3;
+    text-align: center; }
 
 #infoup {
   display: none;
@@ -428,8 +429,10 @@ textarea {
     right: 25px;
     bottom: 25px; }
 
-  #popup:first-child {
-    padding-left: 5px; }
+  #popup {
+    top: 200px; }
+    #popup:first-child {
+      padding-left: 5px; }
 
   .next {
     bottom: 0px;
