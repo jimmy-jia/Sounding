@@ -23,9 +23,23 @@
 					<input id="search" placeholder="Search Genre / Tag" name="tag"></input>
 				</form>
 			</div>
-			<button id="info" onclick="info()"></button>
-			<button id="account"></button>
+			<!--<button id="info" onclick="info()"></button>-->
+			<button id="account" class="animated infinite bounce" onclick="showauthmenu()"></button>
 		</nav>
+		<div id="login">
+			<div id="auth" onclick="login()">
+				<span>Login</span>
+			</div>
+			<div id="mtags"  onclick="tags()">
+				<span>Tags</span>
+			</div>
+			<div id="mabout" onclick="info()">
+				<span>About</span>
+			</div>
+			<div id="msettings" onclick="settings()">
+				<span>Settings</span>
+			</div>
+		</div>
 		<button class="create" onclick="post()"></button>
 		<div id="popup">
 			<p>New Post</p>
@@ -42,9 +56,22 @@
 		</div>
 		<div id="infoup">
 			<p>About</p>
-			<p>Hi! This is cephei.us</p>
-			<p>Pronounced Seh-Fee-Eye, this is a realtime music sharing platform, free for anyone to use. Go ahead and browse the different songs (don't worry, they'll auto load for you), or search for something more specific (try something like pop or rock). Every song has been submitted by a user like you, and you too, are free to send in a song of your own! Just click the post button on the lower right and fill out the form! Oh, and in case you were wondering, the account button hasn't been implemented yet, thanks for clicking it though!</p>
+			<p>Pronounced Seh-Fee-Eye, this is a realtime music sharing platform, free for anyone to use. Go ahead and browse the different songs (don't worry, they'll auto load for you), or search for something more specific (try something like pop or rock). Every song has been submitted by a user like you, and you too, are free to send in a song of your own! Just click the post button on the lower right and fill out the form! Oh, and in case you were wondering, the login works, but any functionality hasn't been implemented yet, thanks for clicking it though!</p>
 			<button class="close" onclick="info()"></button>
+		</div>
+		<div id="settings">
+			<p>Settings</p>
+			<p>Settings will go here after I create some things you can change!</p>
+			<button class="close" onclick="settings()"></button>
+		</div>
+		<div id="tags">
+			<p>Tags</p>
+			<p>Here are some popular tags!
+			<a href="search.html?tag=jazz">Jazz</a>
+			<a href="search.html?tag=rock">Rock</a>
+			<a href="search.html?tag=pop">Pop</a>
+			<a href="search.html?tag=japanese">Japanese</a></p>
+			<button class="close" onclick="tags()"></button>
 		</div>
 		<div class="main find">
 			<div id="posts">
@@ -61,32 +88,5 @@
 			<button class="prev" onclick="prev()"></button>
 			<button class="next" onclick="next()"></button>
 		</div>
-		<script>
-			var loaded=0;
-			$(window).scroll(function () {
-				setTimeout(function(){loaded=1},1);
-			    if ($(window).scrollTop() >= $(document).height() - $(window).height() - 10) {
-			    	if(loaded==1){
-			    		loadMore();}
-				}
-			});
-			function post(){
-				$('#infoup').fadeOut();
-				$('#popup').fadeToggle(400);
-			}
-			function info(){
-				$('#popup').fadeOut();
-				$('#infoup').fadeToggle(400);
-			}
-			function cinemaclose(){
-				var cinemaDiv=document.getElementById('cinema');
-				cinemaDiv.childNodes[3].src="";
-				$('#cinema').fadeToggle(400);
-				$('#modalshadow').fadeToggle(400);
-			}
-			function mobsearch(){
-				$('.search').slideToggle(400);
-			}
-		</script>
 	</body>
 </html>

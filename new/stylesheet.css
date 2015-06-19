@@ -54,8 +54,61 @@ p {
     font-size: 150%;
     font-family: "Poiret One", sans-serif !important; }
 
+#login {
+  position: fixed;
+  right: 0;
+  top: 46px;
+  background-color: #212121;
+  display: none;
+  z-index: 101;
+  box-shadow: 0 5px 5px 0px rgba(33, 33, 33, 0.25); }
+  #login div {
+    padding: 20px;
+    padding-left: 100px;
+    transition: background-color 0.4s;
+    background: linear-gradient(to right, #212121 50%, rgba(255, 255, 255, 0.2));
+    background-size: 250% 100%;
+    background-position: left bottom;
+    transition: all 0.5s cubic-bezier(0.71, 0.34, 0.28, 0.89);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.6); }
+    #login div:hover {
+      cursor: pointer;
+      background-position: right bottom; }
+    #login div span {
+      width: 100%;
+      height: 100%;
+      font-family: "Lato";
+      text-transform: uppercase;
+      color: white;
+      transition: color 0.4s; }
+      #login div span:hover {
+        cursor: pointer;
+        color: #2196F3; }
+  #login #auth::before, #login #mtags::before, #login #mabout::before, #login #msettings::before {
+    content: "";
+    background-image: url(resources/icons/accountc.svg);
+    width: 44px;
+    height: 44px;
+    position: absolute;
+    left: 10px;
+    margin-top: -12px;
+    background-size: cover;
+    -webkit-filter: drop-shadow(0px 0px 5px #000);
+    filter: drop-shadow(0px 0px 5px #000);
+    animation: filter 0.4s, -webkit-filter 0.4s; }
+    #login #auth::before:hover, #login #mtags::before:hover, #login #mabout::before:hover, #login #msettings::before:hover {
+      -webkit-filter: drop-shadow(0px 0px 10px #000);
+      filter: drop-shadow(0px 0px 10px #000); }
+  #login #mtags::before {
+    background-image: url(resources/icons/sort.svg); }
+  #login #mabout::before {
+    background-image: url(resources/icons/help.svg); }
+  #login #msettings::before {
+    background-image: url(resources/icons/settings.svg); }
+
 .main #posts {
-  padding-top: 40px;
+  padding-top: 55px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center; }
@@ -136,7 +189,7 @@ p {
     background-color: #2196F3;
     text-align: center; }
 
-#infoup {
+#infoup, #settings, #tags {
   display: none;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.23), 0 10px 40px rgba(0, 0, 0, 0.19);
   position: fixed;
@@ -152,15 +205,21 @@ p {
   color: white;
   font-family: "Open Sans", sans-serif !important;
   box-sizing: border-box; }
-  #infoup p:first-child {
+  #infoup p:first-child, #settings p:first-child, #tags p:first-child {
     font-size: 150%;
     font-family: "Montserrat", sans-serif !important;
     text-align: center;
     background-color: #2196F3;
     padding: 16px; }
-  #infoup p:nth-child(2) {
+  #infoup p:nth-child(2), #settings p:nth-child(2), #tags p:nth-child(2) {
     color: #888;
     padding: 25px 25px; }
+
+#tags a {
+  color: white;
+  transition: color 0.4s; }
+  #tags a:hover {
+    color: #2196F3; }
 
 input, textarea {
   display: block;
@@ -234,7 +293,7 @@ textarea {
   top: 5px; }
 
 #account {
-  background-image: url(resources/icons/account.svg);
+  background-image: url(resources/icons/more.svg);
   right: 5px; }
   #account:hover {
     -webkit-animation: bounce 1.2s;
@@ -379,13 +438,17 @@ textarea {
 
 @media (max-width: 700px) {
   .search {
-    top: 49px;
+    width: 100%;
+    top: 46px;
     display: none;
     position: absolute;
     background-color: #212121;
-    box-sizing: border-box; }
+    box-sizing: border-box;
+    border-top: 1px solid #2196F3; }
     .search::after {
       display: none; }
+    .search #search {
+      width: 100%; }
 
   nav .mobsearch {
     display: inline-block;
