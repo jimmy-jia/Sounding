@@ -217,10 +217,13 @@ function logout(){
 	console.log('Logged Out');
 	$('#logintxt').text('Login');
 	var onk = document.getElementById('auth');
-	try
+	try{
+		var onk = document.getElementById('auth');
 		onk.onclick=login;
-	catch(err)
+	}
+	catch(err){
 		console.log(err);
+	}
 }
 
 function login(){
