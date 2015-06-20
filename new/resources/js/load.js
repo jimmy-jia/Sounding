@@ -5,6 +5,7 @@ var current;
 function start(){
 	loader();
 	newPost();
+	ref.onAuth(authentication);
 }
 // REGEX URL stripper //
 function getId(link) {
@@ -181,7 +182,6 @@ function cinema(id){
 //Authentication//
 
 var userref=ref.child('users');
-ref.onAuth(authentication);
 var isNewUser = true;
 
 function authentication(){
