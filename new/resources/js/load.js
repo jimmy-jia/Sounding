@@ -217,7 +217,10 @@ function logout(){
 	console.log('Logged Out');
 	$('#logintxt').text('Login');
 	var onk = document.getElementById('auth');
-	onk.onclick=login;
+	try
+		onk.onclick=login;
+	catch(err)
+		console.log(err);
 }
 
 function login(){
