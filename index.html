@@ -1,159 +1,118 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>cephei.us</title>
+		<title>cephei.us - Realtime Music Discovery</title>
 		<meta name="description" content="Cephei.us is a realtime music discovery platform, come join us and see what everyone is listening to!">
 		<meta name="keywords" content="music, cephei, discovery, platform, realtime, community">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
 		<meta charset="utf-8">
-		<link href="resources/css/stylesheet.css" rel="stylesheet" type="text/css">
-		<link href="resources/css/fonts.css" rel="stylesheet" type="text/css">
-		<link rel="icon" href="favicon.ico">
+		<meta name="mobile-web-app-capable" content="yes">
+		<link rel="icon" sizes="192x192" href="cepicon.png">
+		<link rel="manifest" href="manifest.json">
+		<link href="stylesheet.css" rel="stylesheet" type="text/css">
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans|Open+Sans+Condensed:300|Lato|Montserrat|Poiret+One' rel='stylesheet' type='text/css'>
+		<link rel="icon" href="../favicon.ico">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<script src='resources/js/jquery.min.js'></script>
-		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<script src="https://cdn.firebase.com/js/client/2.1.0/firebase.js"></script>
-		<script src="resources/js/sounding.js"></script>
+		<script src="resources/js/load.js"></script>
 	</head>
-	<body onload="loadPage()">
-		<script>
-		  	window.fbAsyncInit = function() {
-			    FB.init({
-				    appId      : '1413249035642465',
-				    xfbml      : true,
-				    version    : 'v2.2'
-			    });
-			};
-			(function(d, s, id){
-			    var js, fjs = d.getElementsByTagName(s)[0];
-			    if (d.getElementById(id)) {return;}
-			    js = d.createElement(s); js.id = id;
-			    js.src = "//connect.facebook.net/en_US/sdk.js";
-			    fjs.parentNode.insertBefore(js, fjs);
-			}(document, 'script', 'facebook-jssdk'));
-		</script>
-		<div class="wrapper">
-			<div class="topbar">
-				<button class="postbutton" onclick="showpost()">+ Post</button>
-				<button class="login" onclick="login">Login</button>
-				<a href="about.html" class="topbut login">About</a>
+	<body onload="start()">
+		<nav>
+			<div class="logo"><a href="#">cephei.us</a></div>
+			<button class="mobsearch" onclick="mobsearch()"></button>
+			<div class="search">
 				<form action="search.html" method="GET">
 					<input id="search" placeholder="Search Genre / Tag" name="tag"></input>
 				</form>
-				<img id="searchclicker" src="resources/search.svg" onclick="showsearch()"></img>
 			</div>
-			<div id="searchbox">
-				<form action="search.html" method="GET">
-					<input id="mobilesearch" placeholder="Search Genre / Tag" name="tag"></input>
-				</form>
+			<!--<button id="info" class="animated infinite bounce" onclick="info()"></button>-->
+			<button id="account" class="animated infinite bounce" onclick="showauthmenu()"></button>
+		</nav>
+		<div id="login">
+			<div id="auth" onclick="login()">
+				<span id="logintxt">Login</span>
 			</div>
-			<div class="toppage">
-				<svg viewBox="0 0 160 160" width="270" height="120">
-					<text transform="matrix(1 0 0 1 -43 100)" font-family="'Open Sans'" font-size="70" fill="#2c3e50">ephei.us</text>
-					<text transform="matrix(1 0 0 1 40 145)" font-family="'Open Sans'" font-size="25" fill="#2c3e50">Music Discovery</text>
-					<g transform=" matrix(2, -0.9, .9, 0.433, 65, 80)">
-					    <path d="M 0,70 A 65,70 0 0,0 65,0 5,5 0 0,1 75,0 75,70 0 0,1 0,70Z" fill="#107896" stroke="#fff">
-					      <animateTransform attributeName="transform" type="rotate" from="360 0 0" to="0 0 0" dur="2s" repeatCount="indefinite" />
-					    </path>
-  					</g>
-                    <text transform="matrix(1 0 0 1 -75 100)" font-family="'Open Sans'" font-size="70" fill="#2c3e50">c</text>
-                    <text transform="matrix(1 0 0 1 -69 145)" font-family="'Open Sans'" font-size="25" fill="#2c3e50">Realtime</text>
-				</svg>
-				<div id="infowrapper">
-					<div class="infoslide" id="infoslide">
-						<div class="flexbox">
-							<div class="item">
-								<span></span><p></p><p></p>
-								<p>Discover new music with cephei.us today!</p>
-								<p>Wide ranges of songs submitted by users like you.</p>
-								<p><br>Join our community and start discovering new songs daily!</p>
-								<br><p>This website is still in development! Please ignore my test posts :)
-								<br>Please email me any suggestions at <a href="mailto:jimmy.j.jia@gmail.com">jimmy.j.jia@gmail.com</a></p>
-								<br><p>Features I'm looking to implement:</p><br>
-								<p>Login, Anti-Spam, Comments, Better Design, More!</p>
-							</div>
-						</div>
-					</div>
-					<a class="aboutclose" onclick="showabout()"><img src="resources/arrow.svg" height="50px" id="closeimg"></img></a>
-				</div>
+			<div id="mtags"  onclick="tags()">
+				<span>Tags</span>
 			</div>
-			<div id="post" class="item">
-				<p></p>
-				<p>Contribute a song to the community!</p>
-				<p></p>
-				<form id="postform" onsubmit="newPost()">
-					<input type="text" name="url" placeholder="Youtube URL"></input>
-					<input type="text" name="title" placeholder="Song Title"></input>
-					<input type="text" name="artist" placeholder="Artist"></input>
-					<textarea rows="6" wrap="hard" name="description" placeholder="Description"></textarea>
-					<input type="text" name="tags" placeholder="Genres/Tags"></input>
-					<input type="button" value="Submit" onclick="newPost()"></input>
-					<input type="reset" value="Reset"></input>
-					<input type="button" value="Close" onclick="showpost()"></input>
-				</form>
+			<div id="mabout" onclick="info()">
+				<span>About</span>
 			</div>
-			<div class="content" id="postcontent">
+			<div id="msettings" onclick="settings()">
+				<span>Settings</span>
 			</div>
-			<div class="push"></div>
-			<!--<input type="button" value="Load More!" onclick="loadMore()"></input>-->
 		</div>
-		<div class="footer"><p>cephei.us | <a onclick="topscroll()">Top</a> | <a href="about.html">About</a> | 2015</p></div>
-		<script>
-			var count=0;
-			var count1=1;
-			var count2=0;
-			function showpost(){
-				var dropper=document.getElementById("post");
-				if (count==0){
-					$(dropper).slideDown(400);
-					count=1;
-				}
-				else{
-					$(dropper).slideUp(400);
-					count=0;
-				}
-			}
-			function showabout(){
-				var aboutdrop=document.getElementById("infoslide");
-				var icon=document.getElementById("closeimg");
-				if (count1==0){
-					$(aboutdrop).slideUp(400);
-					count1=1;
-					icon.style.webkitTransform = "rotate(0deg)";
-					icon.element.style.transform = "rotate(0deg)";	
-					icon.element.style.MozTransform = "rotate(0deg)";	
-				}
-				else{
-					$(aboutdrop).slideDown(400);
-					count1=0;
-					icon.style.webkitTransform = "rotate(180deg)";
-					icon.element.style.transform = "rotate(180deg)";	
-					icon.element.style.MozTransform = "rotate(180deg)";	
-				}
-			}
-			function showsearch(){
-				var searchdrop=document.getElementById("searchbox");
-				if(count2==0){
-					$(searchdrop).slideDown(400);
-					count2=1;
-				}
-				else{
-					$(searchdrop).slideUp(400);
-					count2=0;
-				}
-			}
-			function topscroll(){
-				$("html, body").animate({
-			            scrollTop: 0
-			        }, 600);
-			}
-			var loaded=0;
-			$(window).scroll(function () {
-				setTimeout(function(){loaded=1},1200);
-			    if ($(window).scrollTop() >= $(document).height() - $(window).height() - 10) {
-			    	if(loaded==1){
-			      loadMore();}
-			   }
-			});
-		</script>
+		<button class="create" onclick="post()"></button>
+		<div id="popup">
+			<p>New Post</p>
+			<form id="postform" onsubmit="submitPost()">
+				<input type="text" id="posturl" name="url" placeholder="Youtube URL"></input>
+				<input type="text" id="posttitle" name="title" placeholder="Song Title"></input>
+				<input type="text" id="postartist" name="artist" placeholder="Artist"></input>
+				<textarea rows="6" id="postdescription" wrap="hard" name="description" placeholder="Description"></textarea>
+				<input type="text" id="posttags" name="tags" placeholder="Genres/Tags"></input>
+				<!--<input type="reset" value="Reset"></input>-->
+				<a class="submit" onclick="submitPost()"></a>
+			</form>
+			<button class="close" onclick="post()"></button>
+		</div>
+		<div id="infoup">
+			<p>About</p>
+			<p>Pronounced Seh-Fee-Eye, this is a realtime music sharing platform, free for anyone to use. Go ahead and browse the different songs (don't worry, they'll auto load for you), or search for something more specific (try something like pop or rock). Every song has been submitted by a user like you, and you too, are free to send in a song of your own! Just click the post button on the lower right and fill out the form! Oh, and in case you were wondering, the login works, but any functionality hasn't been implemented yet, thanks for clicking it though!</p>
+			<button class="close" onclick="info()"></button>
+		</div>
+		<div id="settings">
+			<p>Settings</p>
+			<p>Settings will go here after I create some things you can change!</p>
+			<button class="close" onclick="settings()"></button>
+		</div>
+		<div id="tags">
+			<p>Tags</p>
+			<p>Here are some popular tags!
+			<a href="search.html?tag=jazz">Jazz</a>
+			<a href="search.html?tag=rock">Rock</a>
+			<a href="search.html?tag=pop">Pop</a>
+			<a href="search.html?tag=japanese">Japanese</a></p>
+			<button class="close" onclick="tags()"></button>
+		</div>
+
+
+
+
+		<div id="header">
+			<svg width="100%" height="200px">
+			  <!-- Gradient -->
+			  <linearGradient id="gr-simple" x1="0" y1="0" x2="100%" y2="100%">
+			    <stop stop-color="hsl(210, 79%, 46%)" offset="30%"/> <!--206/86/95, 50/100/70 hsl(440, 100%, 50%)-->
+			    <stop stop-color="hsl(210, 79%, 70%)" offset="50%"/>
+			    <stop stop-color="hsl(210, 79%, 60%)" offset="80%"/>
+			  </linearGradient>
+
+			  <!-- Text -->
+			  <text text-anchor="middle" x="50%" y="50%" dy=".35em" class="text" fill="url(#gr-simple)">
+			    cephei.us
+			  </text>
+			  <text text-anchor="middle" x="50%" y="80%" dy=".35em" class="undertext" fill="url(#gr-simple)">
+			    Realtime Music Sharing
+			  </text>
+			</svg>
+		</div>
+		
+		<div class="main">
+			<div id="posts">
+			</div>
+		</div>
+		<div id="modalshadow"></div>
+		<div id="cinema">
+			<p class="cinheader">CINEMA</p>
+			<iframe frameborder="0" allowfullscreen></iframe>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+			<button class="close" onclick="cinemaclose()"></button>
+			<button class="prev" onclick="prev()"></button>
+			<button class="next" onclick="next()"></button>
+		</div>
 	</body>
 </html>

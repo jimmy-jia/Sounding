@@ -1,0 +1,15 @@
+{
+	"name": "cephei.us: Realtime Music Sharing",
+	"icons": [
+		{
+			"src": "cepicon.png",
+			"sizes": "48x48",
+			"type": "image/png",
+			"density": "1.0"
+		}
+
+	],
+	"start_url": "index.html",
+	"display": "standalone"
+
+} 
