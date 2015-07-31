@@ -76,6 +76,24 @@ p
 		font-size: 150%
 		font-family: 'Poiret One', sans-serif !important
 
+
+.text
+	color: white
+	font: 440% 'Poiret One', sans-serif
+	-webkit-filter: drop-shadow( 0px 0px 5px #000 )
+	filter: drop-shadow( 0px 0px 5px #000 )
+.undertext
+	color: white
+	font: 140% 'Open Sans Condensed', sans-serif
+	-webkit-filter: drop-shadow( 0px 0px 5px #000 )
+	filter: drop-shadow( 0px 0px 5px #000 )
+#header
+	padding-top: 60px
+	padding-bottom: 20px
+	width: 100%
+	background-color: $dark-shadow
+	box-shadow: inset 0 -6px 10px -6px #fff
+
 #login
 	position: fixed
 	right: 0
@@ -85,9 +103,11 @@ p
 	z-index: 101
 	box-shadow: 0 5px 5px 0px rgba($dark-shadow, .25) 
 	div
-		padding: 20px
-		padding-left: 70px
-		padding-right: 50px
+		box-sizing: border-box
+		max-width: 100%
+		padding: 40px
+		padding-left: 100px
+		padding-right: 70px
 		transition: background-color .4s
 		background: linear-gradient(to right, $dark-shadow 50%, rgba(white, .2))
 		background-size: 250% 100%
@@ -115,7 +135,7 @@ p
 			width: 44px
 			height: 44px
 			position: absolute
-			left: 10px
+			left: 30px
 			margin-top: -12px
 			background-size: cover
 			-webkit-filter: drop-shadow( 0px 0px 5px #000 )
@@ -354,7 +374,7 @@ textarea
 		animation: spin 1.2s ease-in-out
 .create
 	position: fixed
-	z-index: 10
+	z-index: 1000
 	right: 50px
 	bottom: 50px
 	border: 0
@@ -393,7 +413,9 @@ textarea
 	left: 10%
 	height: 80%
 	top: 10%
+	transition: all 1s
 	background-color: $dark-shadow
+	pointer-events: auto
 	p
 		vertical-align: middle
 		display: inline-block
@@ -425,7 +447,16 @@ textarea
 
 	iframe
 		width: 100%
-		height: 80%
+		height: 70%
+
+#shifting
+	width: 100%
+	height: 100%
+	position: fixed
+	top: 0
+	pointer-events: none
+	z-index: 102
+	transition: all 1.2s
 
 #modalshadow
 	display: none
@@ -436,7 +467,49 @@ textarea
 	height: 100%
 	z-index: 8
 	background-color: rgba(0, 0, 0, .7)
+	pointer-events: none
 
+.minimizeanim
+	transform: translate(-70px, -145px) scale(.01)
+	transform-origin: right bottom
+.minimize
+	position: absolute
+	top: 12px
+	right: 60px
+	background-image: url(resources/icons/minimize.svg)
+	background-size: cover
+	width: 44px
+	height: 44px
+	z-index: 1000
+.maximize
+	display: none
+	@extend .create
+	bottom: 125px
+	background-image: url(resources/icons/maximize.svg)
+	border: 8px solid #00bb66
+	background-color: #00bb66
+	&:hover, &:active, &:focus
+		background-color: #008844
+		border: 8px solid #008844
+#miniclose
+	display: none
+	position: fixed
+	right: 47px
+	bottom: 160px
+	color: transparent
+	background-color: transparent
+	border-radius: 50%
+	width: 20px
+	height: 20px
+	z-index: 1001
+	transition: all .4s
+@media (min-width: 1200px)
+	.maximize:hover + #miniclose, #miniclose:hover
+		display: block
+		color: white
+	#miniclose:hover
+		opacity: 1
+		background-color: rgba(50, 50, 50, .8)
 .next
 	z-index: 5
 	background-color: rgba(black, .9)
@@ -529,9 +602,17 @@ textarea
 			background-color: $dark-shadow
 			padding: 10px 20px
 			padding-bottom: 20px
+		#cinheader
+			z-index: 1000
 	.create
 		right: 25px
 		bottom: 25px
+	.minimizeanim
+		transform: translate(-45px, -120px) scale(.01)
+		transform-origin: right bottom
+	.maximize
+		bottom: 100px
+		right: 25px
 	#popup
 		top: 200px
 		&:first-child
@@ -546,7 +627,12 @@ textarea
 		width: 44px
 		height: 44px
 		left: 0
-
+@media (max-width: 400px)
+	#login
+		width: 100%
+		div
+			width: 100%
+			text-align: center
 
 
 @-webkit-keyframes bounce
@@ -607,19 +693,3 @@ textarea
 	-webkit-animation-iteration-count: infinite
 	animation-iteration-count: infinite
 
-.text
-	color: white
-	font: 440% 'Poiret One', sans-serif
-	-webkit-filter: drop-shadow( 0px 0px 5px #000 )
-	filter: drop-shadow( 0px 0px 5px #000 )
-.undertext
-	color: white
-	font: 140% 'Open Sans Condensed', sans-serif
-	-webkit-filter: drop-shadow( 0px 0px 5px #000 )
-	filter: drop-shadow( 0px 0px 5px #000 )
-#header
-	padding-top: 60px
-	padding-bottom: 20px
-	width: 100%
-	background-color: $dark-shadow
-	box-shadow: inset 0 -6px 10px -6px #fff

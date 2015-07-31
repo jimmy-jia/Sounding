@@ -11,7 +11,6 @@
 		<link rel="manifest" href="manifest.json">
 		<link href="stylesheet.css" rel="stylesheet" type="text/css">
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans|Open+Sans+Condensed:300|Lato|Montserrat|Poiret+One' rel='stylesheet' type='text/css'>
-		<link rel="icon" href="../favicon.ico">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<script src="https://cdn.firebase.com/js/client/2.1.0/firebase.js"></script>
@@ -26,7 +25,6 @@
 					<input id="search" placeholder="Search Genre / Tag" name="tag"></input>
 				</form>
 			</div>
-			<!--<button id="info" class="animated infinite bounce" onclick="info()"></button>-->
 			<button id="account" class="animated infinite bounce" onclick="showauthmenu()"></button>
 		</nav>
 		<div id="login">
@@ -76,10 +74,6 @@
 			<a href="search.html?tag=japanese">Japanese</a></p>
 			<button class="close" onclick="tags()"></button>
 		</div>
-
-
-
-
 		<div id="header">
 			<svg width="100%" height="200px">
 			  <!-- Gradient -->
@@ -104,15 +98,19 @@
 			</div>
 		</div>
 		<div id="modalshadow"></div>
-		<div id="cinema">
-			<p class="cinheader">CINEMA</p>
-			<iframe frameborder="0" allowfullscreen></iframe>
-			<p>&nbsp;</p>
-			<p>&nbsp;</p>
-			<p>&nbsp;</p>
-			<button class="close" onclick="cinemaclose()"></button>
-			<button class="prev" onclick="prev()"></button>
-			<button class="next" onclick="next()"></button>
+		<div id="shifting">
+			<div id="cinema">
+				<p class="cinheader">CINEMA</p>
+				<iframe frameborder="0" allowfullscreen></iframe>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<button class="close" onclick="cinemaclose()"></button>
+				<button class="minimize" onclick="minimize()"></button>
+				<button class="prev" onclick="prev()"></button>
+				<button class="next" onclick="next()"></button>
+			</div>
 		</div>
+		<button class="maximize" onclick="maximize()" id="maximize"></button>
 	</body>
 </html>
