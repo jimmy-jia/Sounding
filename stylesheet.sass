@@ -52,7 +52,7 @@ nav
 	position: fixed
 	background-color: $dark-shadow
 	@include card(3)
-	z-index: 100
+	z-index: 8
 	.mobsearch
 		display: none
 a
@@ -75,6 +75,8 @@ p
 		text-decoration: none
 		font-size: 150%
 		font-family: 'Poiret One', sans-serif !important
+		position: relative
+		top: -3px
 
 
 .text
@@ -100,7 +102,7 @@ p
 	top: 46px
 	background-color: $dark-shadow
 	display: none
-	z-index: 101
+	z-index: 10
 	box-shadow: 0 5px 5px 0px rgba($dark-shadow, .25) 
 	div
 		box-sizing: border-box
@@ -169,12 +171,15 @@ p
 			width: 320px
 			max-width: 100%
 			padding-bottom: 5px
+			border-radius: 3px
 			display: inline-block
 			background-color: white
 			transition: all .4s
 			@include card(1)
 			&:hover
 				@include card(3)
+			img
+				border-radius: 3px 3px 0 0
 			p
 				margin: 0
 				display: block
@@ -355,10 +360,10 @@ textarea
 	@extend #info
 	background-image: url(resources/icons/more.svg)
 	right: 5px
-	&:hover
+	/*&:hover
 		-webkit-animation: bounce 1.2s
 		-moz-animation: bounce 1.2s
-		animation: bounce 1.2s
+		animation: bounce 1.2s*/
 
 .close
 	position: absolute
@@ -368,13 +373,13 @@ textarea
 	background-size: cover
 	width: 44px
 	height: 44px
-	&:hover
+	/*&:hover
 		-webkit-animation: spin 1.2s ease-in-out
 		-moz-animation: spin 1.2s linear
-		animation: spin 1.2s ease-in-out
+		animation: spin 1.2s ease-in-out*/
 .create
 	position: fixed
-	z-index: 1000
+	z-index: 9
 	right: 50px
 	bottom: 50px
 	border: 0
@@ -455,7 +460,7 @@ textarea
 	position: fixed
 	top: 0
 	pointer-events: none
-	z-index: 102
+	z-index: 9
 	transition: all 1.2s
 
 #modalshadow
@@ -467,7 +472,7 @@ textarea
 	height: 100%
 	z-index: 8
 	background-color: rgba(0, 0, 0, .7)
-	pointer-events: none
+	pointer-events: auto
 
 .minimizeanim
 	transform: translate(-70px, -145px) scale(.01)
@@ -480,7 +485,7 @@ textarea
 	background-size: cover
 	width: 44px
 	height: 44px
-	z-index: 1000
+	z-index: 8
 .maximize
 	display: none
 	@extend .create
@@ -501,7 +506,7 @@ textarea
 	border-radius: 50%
 	width: 20px
 	height: 20px
-	z-index: 1001
+	z-index: 10
 	transition: all .4s
 @media (min-width: 1200px)
 	.maximize:hover + #miniclose, #miniclose:hover
@@ -555,6 +560,7 @@ textarea
 	.search
 		width: 100%
 		top: 46px
+		margin-top: 0
 		display: none
 		position: absolute
 		background-color: $dark-shadow
@@ -603,7 +609,7 @@ textarea
 			padding: 10px 20px
 			padding-bottom: 20px
 		#cinheader
-			z-index: 1000
+			z-index: 102
 	.create
 		right: 25px
 		bottom: 25px
@@ -633,6 +639,8 @@ textarea
 		div
 			width: 100%
 			text-align: center
+	.submit
+		right: 20px
 
 
 @-webkit-keyframes bounce

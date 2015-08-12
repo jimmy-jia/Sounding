@@ -176,6 +176,7 @@ function cinema(id){
 	}
 	if(mobileCheck() && minimized)
 		maximize();
+	isvisible("cinema");
 }
 
 
@@ -193,8 +194,6 @@ var isNewUser = true;
 function authentication(){
 	authData = ref.getAuth();
 	if (authData && isNewUser) {
-		// save the user's profile into Firebase so we can list users,
-		// use them in Security and Firebase Rules, and show profiles
 		ref.child("users").child(authData.uid).set({
 			provider: authData.provider,
 			name: getName(authData)
@@ -245,6 +244,7 @@ function login(){
 			console.log("Authenticated successfully with payload:", authData);
 		}
 	});
+	//$('#login').slideUp(400);
 }
 
 
@@ -260,42 +260,40 @@ $(window).scroll(function () {
 	}
 });
 function post(){
-	$('#infoup').fadeOut();
-	$('#settings').fadeOut();
-	$('#tags').fadeOut();
 	$('#popup').fadeToggle(400);
+	isvisible("popup");
 }
 function info(){
-	$('#popup').fadeOut();
-	$('#settings').fadeOut();
-	$('#tags').fadeOut();
 	$('#infoup').fadeToggle(400);
+	$('#login').slideUp(400);
+	isvisible("infoup");
 }
 function cinemaclose(){
 	var cinemaDiv=document.getElementById('cinema');
 	cinemaDiv.childNodes[3].src="";
-	$('#cinema').fadeToggle(400);
-	$('#modalshadow').fadeToggle(400);
+	$('#cinema').fadeToggle(250);
+	$('#modalshadow').fadeToggle(300);
+	context="body";
 }
 function mobsearch(){
 	$('.search').slideToggle(400);
 }
 function showauthmenu(){
 	$('#login').slideToggle(400);
+	isvisible("login");
 }
 function settings(){
-	$('#popup').fadeOut();
-	$('#infoup').fadeOut();
-	$('#tags').fadeOut();
 	$('#settings').fadeToggle(400);
+	$('#login').slideUp(400);
+	isvisible("settings");
 }
 function tags(){
-	$('#popup').fadeOut();
-	$('#infoup').fadeOut();
-	$('#settings').fadeOut();
 	$('#tags').fadeToggle(400);
+	$('#login').slideUp(400);
+	isvisible("tags");
 }
 function minimize(){
+	context="body";
 	minimized = true;
 	$('#shifting').toggleClass('minimizeanim');
 	setTimeout(function(){
@@ -310,4 +308,54 @@ function maximize(){
 	$('#shifting').toggleClass('minimizeanim');
 	$('#modalshadow').fadeToggle(400);
 	minimized = false;
+	context = "cinema";
+}
+
+
+function isvisible(source){
+	if($('#'+source).is(':visible')&&context!=source)
+		context=source;
+	else
+		context="body";
+}
+
+var context = "body";
+$(document).mouseup(function (e)
+{
+	switch(context){
+		case "cinema":
+			if(whatclick(context, e))
+				minimize();
+			break;
+		case "tags":
+			if(whatclick(context, e))
+				tags();
+			break;
+		case "login":
+			if(whatclick(context, e))
+				showauthmenu();
+			break;
+		case "infoup":
+			if(whatclick(context, e))
+				info();
+			break;
+		case "settings":
+			if(whatclick(context, e))
+				settings();
+			break;
+		case "popup":
+			if(whatclick(context, e))
+				post();
+			break;
+	}
+    
+});
+function whatclick(source, e){
+	if(e.target.id=="account" && context=="login")
+		return;
+	var container = $("#"+source);
+    if (!container.is(e.target)
+        && container.has(e.target).length === 0)
+        return true;
+    return false;
 }

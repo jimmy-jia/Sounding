@@ -25,7 +25,7 @@ nav {
   position: fixed;
   background-color: #212121;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.23), 0 10px 40px rgba(0, 0, 0, 0.19);
-  z-index: 100; }
+  z-index: 8; }
   nav .mobsearch {
     display: none; }
 
@@ -50,7 +50,9 @@ p {
     color: white;
     text-decoration: none;
     font-size: 150%;
-    font-family: "Poiret One", sans-serif !important; }
+    font-family: "Poiret One", sans-serif !important;
+    position: relative;
+    top: -3px; }
 
 .text {
   color: white;
@@ -81,7 +83,7 @@ p {
   top: 46px;
   background-color: #212121;
   display: none;
-  z-index: 101;
+  z-index: 10;
   box-shadow: 0 5px 5px 0px rgba(33, 33, 33, 0.25); }
   #login div {
     box-sizing: border-box;
@@ -158,6 +160,7 @@ p {
     width: 320px;
     max-width: 100%;
     padding-bottom: 5px;
+    border-radius: 3px;
     display: inline-block;
     background-color: white;
     -webkit-transition: all 0.4s;
@@ -165,6 +168,8 @@ p {
     box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12); }
     .main #posts > div:hover {
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.23), 0 10px 40px rgba(0, 0, 0, 0.19); }
+    .main #posts > div img {
+      border-radius: 3px 3px 0 0; }
     .main #posts > div p {
       margin: 0;
       display: block;
@@ -344,10 +349,11 @@ textarea {
 
 #account {
   background-image: url(resources/icons/more.svg);
-  right: 5px; }
-  #account:hover {
-    -webkit-animation: bounce 1.2s;
-    animation: bounce 1.2s; }
+  right: 5px;
+  /*&:hover
+   * -webkit-animation: bounce 1.2s
+   * -moz-animation: bounce 1.2s
+   * animation: bounce 1.2s */ }
 
 .close {
   position: absolute;
@@ -356,14 +362,15 @@ textarea {
   background-image: url(resources/icons/close.svg);
   background-size: cover;
   width: 44px;
-  height: 44px; }
-  .close:hover {
-    -webkit-animation: spin 1.2s ease-in-out;
-    animation: spin 1.2s ease-in-out; }
+  height: 44px;
+  /*&:hover
+   * -webkit-animation: spin 1.2s ease-in-out
+   * -moz-animation: spin 1.2s linear
+   * animation: spin 1.2s ease-in-out */ }
 
 .create, .maximize {
   position: fixed;
-  z-index: 1000;
+  z-index: 9;
   right: 50px;
   bottom: 50px;
   border: 0;
@@ -443,7 +450,7 @@ textarea {
   position: fixed;
   top: 0;
   pointer-events: none;
-  z-index: 102;
+  z-index: 9;
   -webkit-transition: all 1.2s;
           transition: all 1.2s; }
 
@@ -456,7 +463,7 @@ textarea {
   height: 100%;
   z-index: 8;
   background-color: rgba(0, 0, 0, 0.7);
-  pointer-events: none; }
+  pointer-events: auto; }
 
 .minimizeanim {
   -webkit-transform: translate(-70px, -145px) scale(0.01);
@@ -474,7 +481,7 @@ textarea {
   background-size: cover;
   width: 44px;
   height: 44px;
-  z-index: 1000; }
+  z-index: 8; }
 
 .maximize {
   display: none;
@@ -496,7 +503,7 @@ textarea {
   border-radius: 50%;
   width: 20px;
   height: 20px;
-  z-index: 1001;
+  z-index: 10;
   -webkit-transition: all 0.4s;
           transition: all 0.4s; }
 
@@ -556,6 +563,7 @@ textarea {
   .search {
     width: 100%;
     top: 46px;
+    margin-top: 0;
     display: none;
     position: absolute;
     background-color: #212121;
@@ -604,7 +612,7 @@ textarea {
       padding: 10px 20px;
       padding-bottom: 20px; }
     #cinema #cinheader {
-      z-index: 1000; }
+      z-index: 102; }
 
   .create, .maximize {
     right: 25px;
@@ -643,7 +651,10 @@ textarea {
     width: 100%; }
     #login div {
       width: 100%;
-      text-align: center; } }
+      text-align: center; }
+
+  .submit {
+    right: 20px; } }
 @-webkit-keyframes bounce {
   0%, 20%, 53%, 80%, 100% {
     -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
